@@ -193,14 +193,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -218,122 +210,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/09/RxJava的简单使用/" itemprop="url">
-                  RxJava的简单使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T15:35:29+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="为什么要用RxJava"><a href="#为什么要用RxJava" class="headerlink" title="为什么要用RxJava"></a>为什么要用RxJava</h2><p>最近发现越来越多的项目开始使用RxJava，那么他到底有什么优势呢。总结来说有两点：<br>1.代码简洁、逻辑清晰，避免了处理复杂逻辑时的大量代码嵌套<br>2.线程自由控制，能够多次自由地切换线程，满足复杂异步操作的需求</p>
-<h2 id="RxJava的使用"><a href="#RxJava的使用" class="headerlink" title="RxJava的使用"></a>RxJava的使用</h2><h4 id="RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来"><a href="#RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来" class="headerlink" title="RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来"></a>RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来</h4><h3 id="要使用RxJava首先引入两个依赖"><a href="#要使用RxJava首先引入两个依赖" class="headerlink" title="要使用RxJava首先引入两个依赖"></a>要使用RxJava首先引入两个依赖</h3><p>compile ‘io.reactivex:rxandroid:1.2.1’<br>compile ‘io.reactivex:rxjava:1.1.6’<br>接下来贴出几个小例子来简单演示RxJava的使用<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/09/RxJava的简单使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
       
 
@@ -423,6 +299,122 @@
 <h3 id="3-对超出的长度给出提示"><a href="#3-对超出的长度给出提示" class="headerlink" title="(3)对超出的长度给出提示"></a>(3)对超出的长度给出提示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">editText.addTextChangedListener(new TextWatcher() &#123;</div><div class="line">			@Override</div><div class="line">			public void onTextChanged(CharSequence s, int start, int before, int count) &#123;</div><div class="line">				</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			@Override</div><div class="line">			public void beforeTextChanged(CharSequence s, int start, int count,</div><div class="line">					int after) &#123;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			@Override</div><div class="line">			public void afterTextChanged(Editable s) &#123;</div><div class="line">				if(s.length()&gt;11)&#123;</div><div class="line">					Toast.makeText(context, &quot;长度超出限制&quot;, Toast.LENGTH_LONG);</div><div class="line">					editText.setText(s.subSequence(0, s.length()-1));</div><div class="line">					editText.setSelection(editText.getText().length());   </div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;);</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/09/EditText基础属性/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/RxJava的简单使用/" itemprop="url">
+                  RxJava的简单使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T15:35:29+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="为什么要用RxJava"><a href="#为什么要用RxJava" class="headerlink" title="为什么要用RxJava"></a>为什么要用RxJava</h2><p>最近发现越来越多的项目开始使用RxJava，那么他到底有什么优势呢。总结来说有两点：<br>1.代码简洁、逻辑清晰，避免了处理复杂逻辑时的大量代码嵌套<br>2.线程自由控制，能够多次自由地切换线程，满足复杂异步操作的需求</p>
+<h2 id="RxJava的使用"><a href="#RxJava的使用" class="headerlink" title="RxJava的使用"></a>RxJava的使用</h2><h4 id="RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来"><a href="#RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来" class="headerlink" title="RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来"></a>RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来</h4><h3 id="要使用RxJava首先引入两个依赖"><a href="#要使用RxJava首先引入两个依赖" class="headerlink" title="要使用RxJava首先引入两个依赖"></a>要使用RxJava首先引入两个依赖</h3><p>compile ‘io.reactivex:rxandroid:1.2.1’<br>compile ‘io.reactivex:rxjava:1.1.6’<br>接下来贴出几个小例子来简单演示RxJava的使用<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/09/RxJava的简单使用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
