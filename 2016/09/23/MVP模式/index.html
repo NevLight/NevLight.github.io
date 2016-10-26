@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="学习整理," />
 
 
 
@@ -94,8 +94,8 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
 <meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png">
 <meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_app.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.bmp">
-<meta property="og:updated_time" content="2016-09-23T02:49:05.238Z">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.png">
+<meta property="og:updated_time" content="2016-10-26T07:36:04.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVP模式">
 <meta name="twitter:description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。
@@ -459,7 +459,7 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 <a id="more"></a>
 <h2 id="MVP案例"><a href="#MVP案例" class="headerlink" title="MVP案例"></a>MVP案例</h2><p>这是一个简单的菜谱App，主要包括列表和详情，下面以列表页威力展示一下MVP的运用。</p>
 <p>列表页视图:<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_app.png" alt="App"></p>
-<p>项目结构:<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.bmp" alt="object"></p>
+<p>项目结构:<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.png" alt="object"></p>
 <p>(1)Model层<br>这里的Model主要负责从网络获取数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public interface ITypeListModel &#123;</div><div class="line">    void loadList(String url, Map&lt;String,String&gt; paraMap, TypeListListener listener);</div><div class="line">    void cancle();</div><div class="line"></div><div class="line">    interface TypeListListener&#123;</div><div class="line">        void loadSuccess(String json,Map&lt;String,String&gt; hMap);</div><div class="line">        void loadFail(Exception e,Map&lt;String,String&gt; hMap);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class TypeListModel implements ITypeListModel &#123;</div><div class="line"></div><div class="line">    private RequestCall call;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void loadList(String url, final Map&lt;String, String&gt; paraMap, final ITypeListModel.TypeListListener listener) &#123;</div><div class="line">        call= OkHttpUtils.post()</div><div class="line">                .url(url)</div><div class="line">                .params(paraMap)</div><div class="line">                .build();</div><div class="line">        call.execute(new StringCallback() &#123;</div><div class="line">            @Override</div><div class="line">            public void onError(Call call, Exception e, int id) &#123;</div><div class="line">                listener.loadFail(e,paraMap);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onResponse(String response, int id) &#123;</div><div class="line">                listener.loadSuccess(response,paraMap);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void cancle() &#123;</div><div class="line">        if(call!=null)</div><div class="line">            call.cancel();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>(2)View层<br>View层管理点击页面上控件的状态和控件的点击事件<br>我将View和Presenter的两个接口都放在了Contract中方便管理</p>
@@ -489,6 +489,12 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/学习整理/" rel="tag">#学习整理</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -501,6 +507,10 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/26/Glide图片加载/" rel="prev" title="Glide图片加载">
+                Glide图片加载 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -572,7 +582,7 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -586,6 +596,13 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
             </div>
           
 
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>

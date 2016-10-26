@@ -1,0 +1,812 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习整理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Glide是一款bumptech发布，并被Google推荐使用的图片加载库。项目地址是https://github.com/bumptech/glide，本文不会对Glide的内存占用和性能进行分析，只是介绍Glide的基本用法。
+导入库12compile &amp;apos;com.github.bumptech.glide:glide:3.7.0&amp;apos;compile &amp;apos;com.andr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Glide图片加载">
+<meta property="og:url" content="http://yoursite.com/2016/10/26/Glide图片加载/index.html">
+<meta property="og:site_name" content="Sisyphuser">
+<meta property="og:description" content="Glide是一款bumptech发布，并被Google推荐使用的图片加载库。项目地址是https://github.com/bumptech/glide，本文不会对Glide的内存占用和性能进行分析，只是介绍Glide的基本用法。
+导入库12compile &amp;apos;com.github.bumptech.glide:glide:3.7.0&amp;apos;compile &amp;apos;com.andr">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/scaltype%281%29.png">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_1.png">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_2.png">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/circle.png">
+<meta property="og:updated_time" content="2016-10-26T07:59:56.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Glide图片加载">
+<meta name="twitter:description" content="Glide是一款bumptech发布，并被Google推荐使用的图片加载库。项目地址是https://github.com/bumptech/glide，本文不会对Glide的内存占用和性能进行分析，只是介绍Glide的基本用法。
+导入库12compile &amp;apos;com.github.bumptech.glide:glide:3.7.0&amp;apos;compile &amp;apos;com.andr">
+<meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/scaltype%281%29.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/26/Glide图片加载/"/>
+
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+
+    function S() {
+        var e = document.createElement("audio");
+        e.setAttribute("class", l);
+        e.src = i;
+        e.loop = false;
+        e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h()
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        e.play()
+    }
+
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+    var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+})()    '>High一下</a> </li>
+  <title> Glide图片加载 | Sisyphuser </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sisyphuser</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android">
+          <a href="/categories/Android" rel="section">
+            
+            Android
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Glide图片加载
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T15:34:40+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/26/Glide图片加载/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/26/Glide图片加载/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Glide是一款bumptech发布，并被Google推荐使用的图片加载库。项目地址是<a href="https://github.com/bumptech/glide" target="_blank" rel="external">https://github.com/bumptech/glide</a>，本文不会对Glide的内存占用和性能进行分析，只是介绍Glide的基本用法。</p>
+<h2 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.github.bumptech.glide:glide:3.7.0&apos;</div><div class="line">compile &apos;com.android.support:support-v4:19.1.0&apos;</div></pre></td></tr></table></figure>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(context)		//关联activity或fragment的生命周期</div><div class="line">	.load(url)			//加载地址(url,资源id，本地图片file)</div><div class="line">	.placeholder(id)	//未加载时的占位图</div><div class="line">	.error(id)			//加载失败时的占位图</div><div class="line">	.into(ImageView);	//加载对象</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><p>Glide的配置是通过实现GlideModule接口来设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class MyGlideModule implements GlideModule &#123;</div><div class="line">    @Override</div><div class="line">    public void applyOptions(Context context, GlideBuilder builder) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void registerComponents(Context context, Glide glide) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后需要在AndroidManifest.xml中声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data</div><div class="line">    android:name=&quot;com.shangbang.store.base.MyGlideModule&quot;</div><div class="line">    android:value=&quot;GlideModule&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>由于Glide是通过反射将GlideModule实例化得，所以需要在混淆文件中加入<br>-keep public class * implements com.bumptech.glide.module.GlideModule</p>
+<p>接下来介绍一些Glide的常用配置</p>
+<ul>
+<li><strong>配置图片本地缓存位置和本地缓存大小</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void applyOptions(final Context context, GlideBuilder builder) &#123;</div><div class="line">    builder.setDiskCache(new DiskCache.Factory() &#123;</div><div class="line">        @Override</div><div class="line">        public DiskCache build() &#123;</div><div class="line">         //缓存的文件夹</div><div class="line">            File cacheLocation = new File(context.getExternalCacheDir(), &quot;glide&quot;);</div><div class="line">            if (!cacheLocation.exists())</div><div class="line">                cacheLocation.mkdirs();</div><div class="line">            return DiskLruCacheWrapper.get(cacheLocation, 250 * 1024 * 1024);//本地缓存的大小</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>设置解码格式</strong><br>Glide默认的采用的使RGB_565，如果你对图片的质量要求较高可以采用ARGB_8888格式，缺点是ARGB_8888的内存占用是RGB_565的两倍。此外，ARGB_8888是支持透明格式的，而RGB_565不支持。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> public void applyOptions(final Context context, GlideBuilder builder) &#123;</div><div class="line">    builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="特殊要求的使用"><a href="#特殊要求的使用" class="headerlink" title="特殊要求的使用"></a>特殊要求的使用</h2><ul>
+<li><strong>缓存策略</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> .diskCacheStrategy(Type)	//设置缓存到本地的策略</div><div class="line">DiskCacheStrategy.NONE		//不会缓存到本地</div><div class="line">DiskCacheStrategy.SOURCE	//只缓存原图</div><div class="line">DiskCacheStrategy.RESULT	//只缓存最终图像（默认）</div><div class="line">DiskCacheStrategy.ALL		//缓存所有图像</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>图片格式设置</strong><br>Glide中给了两种图片的放入格式，需要注意的是使用Glide的图片格式时就不要在ImageView中设置scaleType了，否则可能会使Glide的图片格式失效。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.centerCrop()		//自适应控件大小</div><div class="line">.fitCenter()		//适应图片大小</div></pre></td></tr></table></figure>
+<p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/scaltype%281%29.png" alt="type"></p>
+<ul>
+<li><strong>加载优先级</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">	.priority(TYPE)		//优先级由低到高</div><div class="line">Priority.LOW</div><div class="line">Priority.NORMAL</div><div class="line">Priority.HIGH</div><div class="line">Priority.IMMEDIATE</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>缩略图</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(this)</div><div class="line">               .load(&quot;http://my.csdn.net/uploads/201205/06/1336311585_2632.gif&quot;)</div><div class="line">               .thumbnail(0.1f)</div><div class="line">               .into(iv);</div></pre></td></tr></table></figure>
+<p>利用thumbnail(0.1f)来设置先加载0.1f的缩略图显示，然后再加载需要的图<br><strong><em>缩略图</em></strong><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_1.png" alt=""><br><strong><em>原图</em></strong><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_2.png" alt=""></p>
+<ul>
+<li><strong>自定义图片转化</strong><br>这里以制作圆形头像为例介绍.transform()的使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Glide.with(context)</div><div class="line">               .load(url)</div><div class="line">               .transform(new CircleTransform(context))</div><div class="line">               .into(imageView);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">public class CircleTransform extends BitmapTransformation &#123;</div><div class="line">    public CircleTransform(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) &#123;</div><div class="line">        return circleCrop(pool,toTransform);</div><div class="line">    &#125;</div><div class="line">    private  Bitmap circleCrop(BitmapPool pool, Bitmap source) &#123;</div><div class="line"></div><div class="line">        int size = Math.min(source.getWidth(), source.getHeight());</div><div class="line"></div><div class="line">        int width = (source.getWidth() - size) / 2;</div><div class="line">        int height = (source.getHeight() - size) / 2;</div><div class="line"></div><div class="line">        Bitmap bitmap = pool.get(size, size, Bitmap.Config.ARGB_8888);</div><div class="line">        if (bitmap == null) &#123;</div><div class="line">            bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Canvas canvas = new Canvas(bitmap);</div><div class="line">        Paint paint = new Paint();</div><div class="line">        BitmapShader shader =</div><div class="line">                new BitmapShader(source, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);</div><div class="line">        if (width != 0 || height != 0) &#123;</div><div class="line">            // source isn&apos;t square, move viewport to center</div><div class="line">            Matrix matrix = new Matrix();</div><div class="line">            matrix.setTranslate(-width, -height);</div><div class="line">            shader.setLocalMatrix(matrix);</div><div class="line">        &#125;</div><div class="line">        paint.setShader(shader);</div><div class="line">        paint.setAntiAlias(true);</div><div class="line"></div><div class="line">        float r = size / 2f;</div><div class="line">        canvas.drawCircle(r, r, r, paint);</div><div class="line"></div><div class="line">        return bitmap;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String getId() &#123;</div><div class="line">        return getClass().getName();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/circle.png" alt=""></p>
+<ul>
+<li><strong>回调bitmap</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">private SimpleTarget target = new SimpleTarget&lt;Bitmap&gt;( 250, 250 ) &#123; //250,250可不加，表示原图大小 </div><div class="line">	    @Override</div><div class="line">	    public void onResourceReady(Bitmap bitmap, GlideAnimation glideAnimation) &#123;</div><div class="line">	        imageView2.setImageBitmap( bitmap );</div><div class="line">	    &#125;</div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide</div><div class="line">	        .with( context.getApplicationContext() ) // safer!</div><div class="line">	        .load( url )</div><div class="line">	        .asBitmap()</div><div class="line">	        .into( target );</div></pre></td></tr></table></figure>
+<p>利用这种方法可以直接获得bitmap，然后可以根据需要对Bitmap进行处理</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习整理/" rel="tag">#学习整理</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/23/MVP模式/" rel="next" title="MVP模式">
+                <i class="fa fa-chevron-left"></i> MVP模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/26/Glide图片加载/"
+           data-title="Glide图片加载" data-url="http://yoursite.com/2016/10/26/Glide图片加载/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Andy" />
+          <p class="site-author-name" itemprop="name">Andy</p>
+          <p class="site-description motion-element" itemprop="description">Something Wrong</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导入库"><span class="nav-number">1.</span> <span class="nav-text">导入库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本配置"><span class="nav-number">3.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊要求的使用"><span class="nav-number">4.</span> <span class="nav-text">特殊要求的使用</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sisyphuser"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
