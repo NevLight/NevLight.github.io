@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android Studio,自定义模板," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言在Android Studio如果我们需要新建一个Activity一般都会new一个Empty Activity。然而新建出来的结果往往还不是我们需要的，还需要进行一些修改。比如说Activity默认是继承AppCompatActivity而一般我都习惯写一个统一的父类来继承，并且在Activity中做一些初始化的操作，如果使用MVP模式还需要新建一个Presenter类。对于这些需求我一直都">
+<meta name="keywords" content="Android Studio,自定义模板">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio自定义模板">
+<meta property="og:url" content="http://yoursite.com/2017/12/07/Android Studio自定义模板/index.html">
+<meta property="og:site_name" content="SISYPHUSER">
+<meta property="og:description" content="前言在Android Studio如果我们需要新建一个Activity一般都会new一个Empty Activity。然而新建出来的结果往往还不是我们需要的，还需要进行一些修改。比如说Activity默认是继承AppCompatActivity而一般我都习惯写一个统一的父类来继承，并且在Activity中做一些初始化的操作，如果使用MVP模式还需要新建一个Presenter类。对于这些需求我一直都">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/blog_as_template_ui.png">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/blog_as_template_category.png">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/blog_as_template_parameter.png">
+<meta property="og:updated_time" content="2018-03-03T05:13:24.310Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Studio自定义模板">
+<meta name="twitter:description" content="前言在Android Studio如果我们需要新建一个Activity一般都会new一个Empty Activity。然而新建出来的结果往往还不是我们需要的，还需要进行一些修改。比如说Activity默认是继承AppCompatActivity而一般我都习惯写一个统一的父类来继承，并且在Activity中做一些初始化的操作，如果使用MVP模式还需要新建一个Presenter类。对于这些需求我一直都">
+<meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/blog_as_template_ui.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/07/Android Studio自定义模板/"/>
+
+
+
+
+
+  <title>Android Studio自定义模板 | SISYPHUSER</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SISYPHUSER</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/07/Android Studio自定义模板/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SISYPHUSER">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android Studio自定义模板</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T15:34:40+08:00">
+                2017-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在Android Studio如果我们需要新建一个Activity一般都会new一个Empty Activity。然而新建出来的结果往往还不是我们需要的，还需要进行一些修改。比如说Activity默认是继承AppCompatActivity而一般我都习惯写一个统一的父类来继承，并且在Activity中做一些初始化的操作，如果使用MVP模式还需要新建一个Presenter类。对于这些需求我一直都是在创建完后再进行修改和新建，直到我我看到了Android Studio的自定义模板。</p>
+<a id="more"></a>
+<hr>
+<h3 id="目录文件"><a href="#目录文件" class="headerlink" title="目录文件"></a>目录文件</h3><p>首先我们找到AS默认模板的存放路径<br>AS3.0\android-studio\plugins\android\lib\templates<br>其中我们平时常用的模板就放在activity和other这两个文件夹下。<br>先以最简单的EmptyActivity为例，他的结构目录是</p>
+<ul>
+<li>root<ul>
+<li>SimpleActivity.java.ftl</li>
+<li>SimpleActivity.kt.ftl</li>
+</ul>
+</li>
+<li>globals.xml.ftl</li>
+<li>recipe.xml.ftl</li>
+<li>template.xml</li>
+<li>templat_black_activity.png</li>
+</ul>
+<p>其中root目录下是模板ftl文件<br>globals.xml.ftl是全局参数配置文件<br>recipe.xml.ftl是控制文件创建和修改<br>template.xml和templat_black_activity.png是创建时的UI界面控制</p>
+<hr>
+<h3 id="template-xml"><a href="#template-xml" class="headerlink" title="template.xml"></a>template.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&lt;template</span><br><span class="line">    format=&quot;5&quot;</span><br><span class="line">    revision=&quot;5&quot;</span><br><span class="line">    name=&quot;TheMVP Activity&quot;</span><br><span class="line">    minApi=&quot;9&quot;</span><br><span class="line">    minBuildApi=&quot;14&quot;</span><br><span class="line">    description=&quot;Creates a new empty activity with TheMVP&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;category value=&quot;Activity&quot; /&gt;</span><br><span class="line">    &lt;formfactor value=&quot;Mobile&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parameter</span><br><span class="line">        id=&quot;activityClass&quot;</span><br><span class="line">        name=&quot;Activity Name&quot;</span><br><span class="line">        type=&quot;string&quot;</span><br><span class="line">        constraints=&quot;class|unique|nonempty&quot;</span><br><span class="line">        suggest=&quot;$&#123;layoutToActivity(layoutName)&#125;&quot;</span><br><span class="line">        default=&quot;MainActivity&quot;</span><br><span class="line">        help=&quot;The name of the activity class to create&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parameter</span><br><span class="line">        id=&quot;delegateClass&quot;</span><br><span class="line">        name=&quot;Delegate Name&quot;</span><br><span class="line">        type=&quot;string&quot;</span><br><span class="line">        constraints=&quot;class|unique|nonempty&quot;</span><br><span class="line">        default=&quot;MainDelegate&quot;</span><br><span class="line">        visibility=&quot;isCreateDelegate&quot;</span><br><span class="line">        help=&quot;The name of the delegate class to create&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parameter</span><br><span class="line">        id=&quot;layoutName&quot;</span><br><span class="line">        name=&quot;Layout Name&quot;</span><br><span class="line">        type=&quot;string&quot;</span><br><span class="line">        constraints=&quot;layout|unique|nonempty&quot;</span><br><span class="line">        suggest=&quot;$&#123;activityToLayout(activityClass)&#125;&quot;</span><br><span class="line">        default=&quot;activity_main&quot;</span><br><span class="line">        visibility=&quot;isCreateDelegate&quot;</span><br><span class="line">        help=&quot;The name of the layout to create for the activity&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parameter</span><br><span class="line">        id=&quot;linkedDelegate&quot;</span><br><span class="line">        name=&quot;Linked Delegate&quot;</span><br><span class="line">        type=&quot;string&quot;</span><br><span class="line">        constraints=&quot;nonempty&quot;</span><br><span class="line">        default=&quot;AppDelegate&quot;</span><br><span class="line">        visibility=&quot;!isCreateDelegate&quot;</span><br><span class="line">        help=&quot;Chose exists delegate&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parameter</span><br><span class="line">        id=&quot;isCreateDelegate&quot;</span><br><span class="line">        name=&quot;Create Delegate&quot;</span><br><span class="line">        type=&quot;boolean&quot;</span><br><span class="line">        default=&quot;true&quot;</span><br><span class="line">        help=&quot;If false, this delegate and layout will not be created&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;parameter</span><br><span class="line">        id=&quot;packageName&quot;</span><br><span class="line">        name=&quot;Package name&quot;</span><br><span class="line">        type=&quot;string&quot;</span><br><span class="line">        constraints=&quot;package&quot;</span><br><span class="line">        default=&quot;com.mycompany.myapp&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 128x128 thumbnails relative to template.xml --&gt;</span><br><span class="line">    &lt;thumbs&gt;</span><br><span class="line">        &lt;!-- default thumbnail is required --&gt;</span><br><span class="line">        &lt;thumb&gt;template_blank_activity.png&lt;/thumb&gt;</span><br><span class="line">    &lt;/thumbs&gt;</span><br><span class="line"></span><br><span class="line">    &lt;globals file=&quot;globals.xml.ftl&quot; /&gt;</span><br><span class="line">    &lt;execute file=&quot;recipe.xml.ftl&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<div align="center"><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/blog_as_template_ui.png"><br></div>
+
+<p>上面就是template.xml和对应的创建UI示图。</p>
+<hr>
+<p>template标签主要显示一些名称、描述和一些需要的版本信息，这里我写的测试模板名称为TheMVP Activity。</p>
+<p>&lt; category value=”Activity” /&gt; 说明该标签放在Activity目录下，如果设置为Fragment则放在Fragment目录先下。</p>
+<div align="center"><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/blog_as_template_category.png"><br></div>
+
+<hr>
+<p>parameter标签就是主要的创建item的标签了</p>
+<div align="center"><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/blog_as_template_parameter.png"><br></div>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parameter</span><br><span class="line">	id=&quot;packageName&quot;</span><br><span class="line">	name=&quot;Package name&quot;</span><br><span class="line">	type=&quot;string&quot;</span><br><span class="line">	constraints=&quot;package&quot;</span><br><span class="line">	default=&quot;com.mycompany.myapp&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>这个是默认的选择包名的parameter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;thumbs&gt;</span><br><span class="line">       &lt;thumb&gt;template_blank_activity.png&lt;/thumb&gt;</span><br><span class="line">   &lt;/thumbs&gt;</span><br><span class="line"></span><br><span class="line">   &lt;globals file=&quot;globals.xml.ftl&quot; /&gt;</span><br><span class="line">   &lt;execute file=&quot;recipe.xml.ftl&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>这三个是配置外部关联文件，template_blank_activity.png就显示在UI示图左边，globals.xml.ftl和recipe.xml.ftl将会在下面提到。</p>
+<hr>
+<h3 id="globals-xml-ftl"><a href="#globals-xml-ftl" class="headerlink" title="globals.xml.ftl"></a>globals.xml.ftl</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;globals&gt;</span><br><span class="line">&lt;#if isCreateDelegate&gt;</span><br><span class="line">    &lt;global id=&quot;superClass&quot; type=&quot;string&quot; value=&quot;ActivityPresenter&amp;lt;$&#123;delegateClass&#125;&amp;gt;&quot; /&gt;</span><br><span class="line">&lt;#else&gt;</span><br><span class="line">    &lt;global id=&quot;superClass&quot; type=&quot;string&quot; value=&quot;ActivityPresenter&amp;lt;$&#123;linkedDelegate&#125;&amp;gt;&quot; /&gt;</span><br><span class="line">&lt;/#if&gt;</span><br><span class="line">    &lt;global id=&quot;hasNoActionBar&quot; type=&quot;boolean&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">    &lt;global id=&quot;parentActivityClass&quot; value=&quot;&quot; /&gt;</span><br><span class="line">    &lt;global id=&quot;simpleLayoutName&quot; value=&quot;$&#123;layoutName&#125;&quot; /&gt;</span><br><span class="line">    &lt;global id=&quot;excludeMenu&quot; type=&quot;boolean&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">    &lt;global id=&quot;generateActivityTitle&quot; type=&quot;boolean&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">    &lt;#include &quot;../common/common_globals.xml.ftl&quot; /&gt;</span><br><span class="line">&lt;/globals&gt;</span><br></pre></td></tr></table></figure>
+<p>globals.xml.ftl中的内容比较简单，就是一些全局使用的值。这里有一个简单的逻辑标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;#if Boolean&gt;</span><br><span class="line">&lt;#else&gt;</span><br><span class="line">&lt;/#if&gt;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="root"><a href="#root" class="headerlink" title="root"></a>root</h3><p>root目录下方的是一些作为模板的activity、layout、fragment文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package $&#123;packageName&#125;.activity</span><br><span class="line"></span><br><span class="line">import android.app.Activity</span><br><span class="line">import android.content.Intent</span><br><span class="line">import android.os.Bundle</span><br><span class="line">import $&#123;applicationPackage&#125;.base.ActivityPresenter</span><br><span class="line">&lt;#if isCreateDelegate&gt;</span><br><span class="line">import $&#123;packageName&#125;.delegate.$&#123;delegateClass&#125;</span><br><span class="line">&lt;#else&gt;</span><br><span class="line">import $&#123;packageName&#125;.delegate.$&#123;linkedDelegate&#125;</span><br><span class="line">&lt;/#if&gt;</span><br><span class="line"></span><br><span class="line">class $&#123;activityClass&#125; : $&#123;superClass&#125;() &#123;</span><br><span class="line">&lt;#if isCreateDelegate&gt;</span><br><span class="line">    override fun instanceDelegate(): $&#123;delegateClass&#125; &#123;</span><br><span class="line">        return $&#123;delegateClass&#125;()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;#else&gt;</span><br><span class="line">	override fun instanceDelegate(): $&#123;linkedDelegate&#125; &#123;</span><br><span class="line">        return $&#123;linkedDelegate&#125;()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/#if&gt;</span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line">        fun start(activity: Activity) &#123;</span><br><span class="line">            val intent=Intent(activity,$&#123;activityClass&#125;::class.java)</span><br><span class="line">            start(activity,intent)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写法也比较简单，与正常的代码一样，只是在一些位置将之前template.xml和globals.xml.ftl中输入和定义的值用${id}代替</p>
+<hr>
+<h3 id="recipe-xml-ftl"><a href="#recipe-xml-ftl" class="headerlink" title="recipe.xml.ftl"></a>recipe.xml.ftl</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;recipe&gt;</span><br><span class="line"></span><br><span class="line">&lt;#if generateKotlin&gt;</span><br><span class="line">    &lt;instantiate from=&quot;root/src/app_package/SimpleActivity.kt.ftl&quot;</span><br><span class="line">                   to=&quot;$&#123;escapeXmlAttribute(srcOut)&#125;/activity/$&#123;activityClass&#125;.kt&quot; /&gt;</span><br><span class="line">    &lt;open file=&quot;$&#123;escapeXmlAttribute(srcOut)&#125;/activity/$&#123;activityClass&#125;.kt&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;#if isCreateDelegate&gt;</span><br><span class="line"></span><br><span class="line">    &lt;instantiate from=&quot;root/src/app_package/SimpleDelegate.kt.ftl&quot;</span><br><span class="line">                   to=&quot;$&#123;escapeXmlAttribute(srcOut)&#125;/delegate/$&#123;delegateClass&#125;.kt&quot; /&gt;</span><br><span class="line">    &lt;open file=&quot;$&#123;escapeXmlAttribute(srcOut)&#125;/delegate/$&#123;delegateClass&#125;.kt&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;instantiate from=&quot;root/src/app_package/activity_simple.xml.ftl&quot;</span><br><span class="line">                   to=&quot;$&#123;escapeXmlAttribute(resOut)&#125;/layout/$&#123;layoutName&#125;.xml&quot; /&gt;</span><br><span class="line">    &lt;open file=&quot;$&#123;escapeXmlAttribute(resOut)&#125;/layout/$&#123;layoutName&#125;.xml&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/#if&gt;</span><br><span class="line">&lt;/#if&gt;</span><br><span class="line"></span><br><span class="line">    &lt;merge from=&quot;root/AndroidManifest.xml.ftl&quot;</span><br><span class="line">             to=&quot;$&#123;escapeXmlAttribute(manifestOut)&#125;/AndroidManifest.xml&quot; /&gt;</span><br><span class="line">&lt;/recipe&gt;</span><br></pre></td></tr></table></figure>
+<p>recipe是一个管理创建的文件，主要用到的操作标签有：</p>
+<ul>
+<li>copy：从root文件夹复制文件到目标文件夹</li>
+<li>instantiate：从root中将对应的ftl文件经处理后转为目标文件</li>
+<li>open：打开目标文件</li>
+<li>merge：合并文件</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
+          
+            <a href="/tags/自定义模板/" rel="tag"># 自定义模板</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/16/Dagger2使用/" rel="next" title="Dagger2使用">
+                <i class="fa fa-chevron-left"></i> Dagger2使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/SurfaceView的使用/" rel="prev" title="SurfaceView的使用">
+                SurfaceView的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Andy" />
+            
+              <p class="site-author-name" itemprop="name">Andy</p>
+              <p class="site-description motion-element" itemprop="description">Something Wrong</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录文件"><span class="nav-number">2.</span> <span class="nav-text">目录文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#template-xml"><span class="nav-number">3.</span> <span class="nav-text">template.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#globals-xml-ftl"><span class="nav-number">4.</span> <span class="nav-text">globals.xml.ftl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root"><span class="nav-number">5.</span> <span class="nav-text">root</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#recipe-xml-ftl"><span class="nav-number">6.</span> <span class="nav-text">recipe.xml.ftl</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

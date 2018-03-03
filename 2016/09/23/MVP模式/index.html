@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -27,48 +34,41 @@
 
 
 
-  
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
   
   
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="学习整理," />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="设计模式,MVP," />
 
 
 
@@ -77,207 +77,60 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
 
 
-
-
-
-
-<meta name="description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。
-MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
+<meta name="description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。 MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
+<meta name="keywords" content="设计模式,MVP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MVP模式">
 <meta property="og:url" content="http://yoursite.com/2016/09/23/MVP模式/index.html">
-<meta property="og:site_name" content="Sisyphuser">
-<meta property="og:description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。
-MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
+<meta property="og:site_name" content="SISYPHUSER">
+<meta property="og:description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。 MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png">
 <meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_app.png">
 <meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.png">
-<meta property="og:updated_time" content="2016-10-26T07:36:04.922Z">
+<meta property="og:updated_time" content="2018-03-03T05:15:13.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVP模式">
-<meta name="twitter:description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。
-MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
+<meta name="twitter:description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。 MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
 <meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
 
 
-
   <link rel="canonical" href="http://yoursite.com/2016/09/23/MVP模式/"/>
 
-<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-    function c() {
-        var e = document.createElement("link");
-        e.setAttribute("type", "text/css");
-        e.setAttribute("rel", "stylesheet");
-        e.setAttribute("href", f);
-        e.setAttribute("class", l);
-        document.body.appendChild(e)
-    }
 
-    function h() {
-        var e = document.getElementsByClassName(l);
-        for (var t = 0; t < e.length; t++) {
-            document.body.removeChild(e[t])
-        }
-    }
 
-    function p() {
-        var e = document.createElement("div");
-        e.setAttribute("class", a);
-        document.body.appendChild(e);
-        setTimeout(function() {
-            document.body.removeChild(e)
-        }, 100)
-    }
 
-    function d(e) {
-        return {
-            height : e.offsetHeight,
-            width : e.offsetWidth
-        }
-    }
 
-    function v(i) {
-        var s = d(i);
-        return s.height > e && s.height < n && s.width > t && s.width < r
-    }
-
-    function m(e) {
-        var t = e;
-        var n = 0;
-        while (!!t) {
-            n += t.offsetTop;
-            t = t.offsetParent
-        }
-        return n
-    }
-
-    function g() {
-        var e = document.documentElement;
-        if (!!window.innerWidth) {
-            return window.innerHeight
-        } else if (e && !isNaN(e.clientHeight)) {
-            return e.clientHeight
-        }
-        return 0
-    }
-
-    function y() {
-        if (window.pageYOffset) {
-            return window.pageYOffset
-        }
-        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-    }
-
-    function E(e) {
-        var t = m(e);
-        return t >= w && t <= b + w
-    }
-
-    function S() {
-        var e = document.createElement("audio");
-        e.setAttribute("class", l);
-        e.src = i;
-        e.loop = false;
-        e.addEventListener("canplay", function() {
-            setTimeout(function() {
-                x(k)
-            }, 500);
-            setTimeout(function() {
-                N();
-                p();
-                for (var e = 0; e < O.length; e++) {
-                    T(O[e])
-                }
-            }, 15500)
-        }, true);
-        e.addEventListener("ended", function() {
-            N();
-            h()
-        }, true);
-        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-        document.body.appendChild(e);
-        e.play()
-    }
-
-    function x(e) {
-        e.className += " " + s + " " + o
-    }
-
-    function T(e) {
-        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-    }
-
-    function N() {
-        var e = document.getElementsByClassName(s);
-        var t = new RegExp("\\b" + s + "\\b");
-        for (var n = 0; n < e.length; ) {
-            e[n].className = e[n].className.replace(t, "")
-        }
-    }
-
-    var e = 30;
-    var t = 30;
-    var n = 350;
-    var r = 350;
-    var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
-    var s = "mw-harlem_shake_me";
-    var o = "im_first";
-    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-    var a = "mw-strobe_light";
-    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-    var l = "mw_added_css";
-    var b = g();
-    var w = y();
-    var C = document.getElementsByTagName("*");
-    var k = null;
-    for (var L = 0; L < C.length; L++) {
-        var A = C[L];
-        if (v(A)) {
-            if (E(A)) {
-                k = A;
-                break
-            }
-        }
-    }
-    if (A === null) {
-        console.warn("Could not find a node of the right size. Please try a different page.");
-        return
-    }
-    c();
-    S();
-    var O = [];
-    for (var L = 0; L < C.length; L++) {
-        var A = C[L];
-        if (v(A)) {
-            O.push(A)
-        }
-    }
-})()    '>High一下</a> </li>
-  <title> MVP模式 | Sisyphuser </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>MVP模式 | SISYPHUSER</title>
   
 
 
@@ -287,36 +140,42 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 
 
 
+</head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Sisyphuser</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SISYPHUSER</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <p class="site-subtitle"></p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -329,39 +188,49 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
             首页
           </a>
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-android">
-          <a href="/categories/Android" rel="section">
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
             
-            Android
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-python">
-          <a href="/categories/Python" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
             
-            menu.python
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/categories/mine" rel="section">
-            
-            关于
+            日程表
           </a>
         </li>
       
@@ -372,6 +241,8 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 
   
 </nav>
+
+
 
  </div>
     </header>
@@ -386,49 +257,68 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
     
 
   
-  
 
   
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/23/MVP模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SISYPHUSER">
+    </span>
 
     
       <header class="post-header">
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                MVP模式
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">MVP模式</h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T10:46:30+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-23T10:46:30+08:00">
+                2016-09-23
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Android/" itemprop="url" rel="index">
                     <span itemprop="name">Android</span>
                   </a>
@@ -436,33 +326,30 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/23/MVP模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/23/MVP模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
           
 
           
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -471,45 +358,46 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。</p>
 <h2 id="MVP结构"><a href="#MVP结构" class="headerlink" title="MVP结构"></a>MVP结构</h2><p>MVP主要由Model、View、Presenter三部分构成。<br>Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；<br>View:即Activity和Fragment，负责页面的绘制，刷新；<br>Presenter:负责连接Model层和View层，从Model中获取数据然后控制View刷新页面，是主要逻辑操作的地方。</p>
-<p>这里借用<a href="https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android" target="_blank" rel="external">此文</a>的一张图片来表示Model、View和Presenter三者的关系<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png" alt="mvp"></p>
+<p>这里借用<a href="https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android" target="_blank" rel="noopener">此文</a>的一张图片来表示Model、View和Presenter三者的关系<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png" alt="mvp"></p>
 <a id="more"></a>
 <h2 id="MVP案例"><a href="#MVP案例" class="headerlink" title="MVP案例"></a>MVP案例</h2><p>这是一个简单的菜谱App，主要包括列表和详情，下面以列表页威力展示一下MVP的运用。</p>
 <p>列表页视图:<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_app.png" alt="App"></p>
 <p>项目结构:<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.png" alt="object"></p>
-<p>(1)Model层<br>这里的Model主要负责从网络获取数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public interface ITypeListModel &#123;</div><div class="line">    void loadList(String url, Map&lt;String,String&gt; paraMap, TypeListListener listener);</div><div class="line">    void cancle();</div><div class="line"></div><div class="line">    interface TypeListListener&#123;</div><div class="line">        void loadSuccess(String json,Map&lt;String,String&gt; hMap);</div><div class="line">        void loadFail(Exception e,Map&lt;String,String&gt; hMap);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class TypeListModel implements ITypeListModel &#123;</div><div class="line"></div><div class="line">    private RequestCall call;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void loadList(String url, final Map&lt;String, String&gt; paraMap, final ITypeListModel.TypeListListener listener) &#123;</div><div class="line">        call= OkHttpUtils.post()</div><div class="line">                .url(url)</div><div class="line">                .params(paraMap)</div><div class="line">                .build();</div><div class="line">        call.execute(new StringCallback() &#123;</div><div class="line">            @Override</div><div class="line">            public void onError(Call call, Exception e, int id) &#123;</div><div class="line">                listener.loadFail(e,paraMap);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onResponse(String response, int id) &#123;</div><div class="line">                listener.loadSuccess(response,paraMap);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void cancle() &#123;</div><div class="line">        if(call!=null)</div><div class="line">            call.cancel();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(1)Model层<br>这里的Model主要负责从网络获取数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface ITypeListModel &#123;</span><br><span class="line">    void loadList(String url, Map&lt;String,String&gt; paraMap, TypeListListener listener);</span><br><span class="line">    void cancle();</span><br><span class="line"></span><br><span class="line">    interface TypeListListener&#123;</span><br><span class="line">        void loadSuccess(String json,Map&lt;String,String&gt; hMap);</span><br><span class="line">        void loadFail(Exception e,Map&lt;String,String&gt; hMap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class TypeListModel implements ITypeListModel &#123;</span><br><span class="line"></span><br><span class="line">    private RequestCall call;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void loadList(String url, final Map&lt;String, String&gt; paraMap, final ITypeListModel.TypeListListener listener) &#123;</span><br><span class="line">        call= OkHttpUtils.post()</span><br><span class="line">                .url(url)</span><br><span class="line">                .params(paraMap)</span><br><span class="line">                .build();</span><br><span class="line">        call.execute(new StringCallback() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Call call, Exception e, int id) &#123;</span><br><span class="line">                listener.loadFail(e,paraMap);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onResponse(String response, int id) &#123;</span><br><span class="line">                listener.loadSuccess(response,paraMap);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void cancle() &#123;</span><br><span class="line">        if(call!=null)</span><br><span class="line">            call.cancel();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>(2)View层<br>View层管理点击页面上控件的状态和控件的点击事件<br>我将View和Presenter的两个接口都放在了Contract中方便管理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">interface View&#123;</div><div class="line"></div><div class="line">    void showLoading();</div><div class="line"></div><div class="line">    void hideLoading();</div><div class="line"></div><div class="line">    void showLoadFail();</div><div class="line"></div><div class="line">    void hideLoadFail();</div><div class="line"></div><div class="line">    void showContent();</div><div class="line"></div><div class="line">    void hideContent();</div><div class="line"></div><div class="line">    void toastMessage(String message);</div><div class="line"></div><div class="line">    void setContentData(List&lt;FoodTypeGroup&gt; list);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line">public class FoodTypeActivity extends AppCompatActivity implements FoodTypeContract.View, View.OnClickListener, ExpandableListView.OnChildClickListener &#123;</div><div class="line"></div><div class="line">    @Bind(R.id.tv_head_back)</div><div class="line">    View tvBack;</div><div class="line">    @Bind(R.id.tv_head_title)</div><div class="line">    TextView tvTitle;</div><div class="line">    @Bind(R.id.elv_content)</div><div class="line">    ExpandableListView elvContent;</div><div class="line">    @Bind(R.id.progressBar)</div><div class="line">    View progressBar;</div><div class="line">    @Bind(R.id.tv_fail)</div><div class="line">    View tvFail;</div><div class="line"></div><div class="line">    private FoodTypeAdapter adapter;</div><div class="line">    private List&lt;FoodTypeGroup&gt; adapterList;</div><div class="line">    private FoodTypeContract.Presenter foodTypePresenter;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_food_type);</div><div class="line">        ButterKnife.bind(this);</div><div class="line">        foodTypePresenter=new FoodTypePresenter(this);</div><div class="line">        initView();</div><div class="line">        initAdapter();</div><div class="line">        foodTypePresenter.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDestroy() &#123;</div><div class="line">        super.onDestroy();</div><div class="line">        foodTypePresenter.onDestroy();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initView() &#123;</div><div class="line">        tvBack.setVisibility(View.GONE);</div><div class="line">        tvTitle.setText(&quot;菜品分类&quot;);</div><div class="line">        tvFail.setOnClickListener(this);</div><div class="line">        elvContent.setOnChildClickListener(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initAdapter()&#123;</div><div class="line">        adapterList=new ArrayList&lt;&gt;();</div><div class="line">        adapter=new FoodTypeAdapter(this,adapterList);</div><div class="line">        elvContent.setAdapter(adapter);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onClick(View view) &#123;</div><div class="line">        switch (view.getId())&#123;</div><div class="line">            case R.id.tv_fail://重新加载</div><div class="line">                foodTypePresenter.start();</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) &#123;</div><div class="line">        Intent intent=new Intent(this,TypeListActivity.class);</div><div class="line">        intent.putExtra(&quot;id&quot;,adapterList.get(i).getList().get(i1).getId());</div><div class="line">        intent.putExtra(&quot;type&quot;,adapterList.get(i).getList().get(i1).getName());</div><div class="line">        startActivity(intent);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void showLoading() &#123;</div><div class="line">        progressBar.setVisibility(View.VISIBLE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void hideLoading() &#123;</div><div class="line">        progressBar.setVisibility(View.GONE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void showLoadFail() &#123;</div><div class="line">        tvFail.setVisibility(View.VISIBLE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void hideLoadFail() &#123;</div><div class="line">        tvFail.setVisibility(View.GONE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void showContent() &#123;</div><div class="line">        elvContent.setVisibility(View.VISIBLE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void hideContent() &#123;</div><div class="line">        elvContent.setVisibility(View.GONE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void toastMessage(String message)&#123;</div><div class="line">        ToastUtil.showToast(this,message);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void setContentData(List&lt;FoodTypeGroup&gt; list) &#123;</div><div class="line">        adapterList.clear();</div><div class="line">        adapterList.addAll(list);</div><div class="line">        adapter.notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">interface View&#123;</span><br><span class="line"></span><br><span class="line">    void showLoading();</span><br><span class="line"></span><br><span class="line">    void hideLoading();</span><br><span class="line"></span><br><span class="line">    void showLoadFail();</span><br><span class="line"></span><br><span class="line">    void hideLoadFail();</span><br><span class="line"></span><br><span class="line">    void showContent();</span><br><span class="line"></span><br><span class="line">    void hideContent();</span><br><span class="line"></span><br><span class="line">    void toastMessage(String message);</span><br><span class="line"></span><br><span class="line">    void setContentData(List&lt;FoodTypeGroup&gt; list);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">public class FoodTypeActivity extends AppCompatActivity implements FoodTypeContract.View, View.OnClickListener, ExpandableListView.OnChildClickListener &#123;</span><br><span class="line"></span><br><span class="line">    @Bind(R.id.tv_head_back)</span><br><span class="line">    View tvBack;</span><br><span class="line">    @Bind(R.id.tv_head_title)</span><br><span class="line">    TextView tvTitle;</span><br><span class="line">    @Bind(R.id.elv_content)</span><br><span class="line">    ExpandableListView elvContent;</span><br><span class="line">    @Bind(R.id.progressBar)</span><br><span class="line">    View progressBar;</span><br><span class="line">    @Bind(R.id.tv_fail)</span><br><span class="line">    View tvFail;</span><br><span class="line"></span><br><span class="line">    private FoodTypeAdapter adapter;</span><br><span class="line">    private List&lt;FoodTypeGroup&gt; adapterList;</span><br><span class="line">    private FoodTypeContract.Presenter foodTypePresenter;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_food_type);</span><br><span class="line">        ButterKnife.bind(this);</span><br><span class="line">        foodTypePresenter=new FoodTypePresenter(this);</span><br><span class="line">        initView();</span><br><span class="line">        initAdapter();</span><br><span class="line">        foodTypePresenter.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDestroy() &#123;</span><br><span class="line">        super.onDestroy();</span><br><span class="line">        foodTypePresenter.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initView() &#123;</span><br><span class="line">        tvBack.setVisibility(View.GONE);</span><br><span class="line">        tvTitle.setText(&quot;菜品分类&quot;);</span><br><span class="line">        tvFail.setOnClickListener(this);</span><br><span class="line">        elvContent.setOnChildClickListener(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initAdapter()&#123;</span><br><span class="line">        adapterList=new ArrayList&lt;&gt;();</span><br><span class="line">        adapter=new FoodTypeAdapter(this,adapterList);</span><br><span class="line">        elvContent.setAdapter(adapter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View view) &#123;</span><br><span class="line">        switch (view.getId())&#123;</span><br><span class="line">            case R.id.tv_fail://重新加载</span><br><span class="line">                foodTypePresenter.start();</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) &#123;</span><br><span class="line">        Intent intent=new Intent(this,TypeListActivity.class);</span><br><span class="line">        intent.putExtra(&quot;id&quot;,adapterList.get(i).getList().get(i1).getId());</span><br><span class="line">        intent.putExtra(&quot;type&quot;,adapterList.get(i).getList().get(i1).getName());</span><br><span class="line">        startActivity(intent);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void showLoading() &#123;</span><br><span class="line">        progressBar.setVisibility(View.VISIBLE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void hideLoading() &#123;</span><br><span class="line">        progressBar.setVisibility(View.GONE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void showLoadFail() &#123;</span><br><span class="line">        tvFail.setVisibility(View.VISIBLE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void hideLoadFail() &#123;</span><br><span class="line">        tvFail.setVisibility(View.GONE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void showContent() &#123;</span><br><span class="line">        elvContent.setVisibility(View.VISIBLE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void hideContent() &#123;</span><br><span class="line">        elvContent.setVisibility(View.GONE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void toastMessage(String message)&#123;</span><br><span class="line">        ToastUtil.showToast(this,message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setContentData(List&lt;FoodTypeGroup&gt; list) &#123;</span><br><span class="line">        adapterList.clear();</span><br><span class="line">        adapterList.addAll(list);</span><br><span class="line">        adapter.notifyDataSetChanged();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>(3)Presenter层<br>从View中接收到获取列表请求后调用Model获取列表数据，根据列表数据的状态控制View作不同的显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">interface Presenter extends BasePresenter&#123;</div><div class="line">    @Override</div><div class="line">    void start();</div><div class="line"></div><div class="line">    @Override</div><div class="line">    void onDestroy();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">public class FoodTypePresenter implements FoodTypeContract.Presenter&#123;</div><div class="line">    private FoodTypeContract.View foodTypeView;</div><div class="line">    private IFoodTypeModel iFoodTypeModel;</div><div class="line">    public FoodTypePresenter(FoodTypeContract.View foodTypeView)&#123;</div><div class="line">        this.foodTypeView=foodTypeView;</div><div class="line">        iFoodTypeModel=new FoodTypeModel();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void start() &#123;</div><div class="line">        foodTypeView.hideContent();</div><div class="line">        foodTypeView.hideLoadFail();</div><div class="line">        foodTypeView.showLoading();</div><div class="line">        final Map&lt;String,String&gt; paraMap=new HashMap&lt;&gt;();</div><div class="line">        paraMap.put(&quot;key&quot;,BaseUrl.KEY);</div><div class="line">        iFoodTypeModel.loadList(BaseUrl.FOODTYPE, paraMap, new IFoodTypeModel.FoodTypeListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void loadSuccess(String json) &#123;</div><div class="line">                LoadSuccess.onSuccess(json, new LoadSuccess.LoadSuccessCallBack() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void code200(JSONObject json) throws JSONException &#123;</div><div class="line">                        if(foodTypeView!=null) &#123;</div><div class="line">                            List&lt;FoodTypeGroup&gt; list = JSON.parseArray(json.getJSONArray(&quot;result&quot;).toString(), FoodTypeGroup.class);</div><div class="line">                            foodTypeView.hideLoading();</div><div class="line">                            foodTypeView.showContent();</div><div class="line">                            foodTypeView.setContentData(list);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    @Override</div><div class="line">                    public void codeOther(String errorMessage) &#123;</div><div class="line">                        if(foodTypeView!=null) &#123;</div><div class="line">                            foodTypeView.hideLoading();</div><div class="line">                            foodTypeView.showLoadFail();</div><div class="line">                            foodTypeView.toastMessage(errorMessage);</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void loadFail(Exception e) &#123;</div><div class="line">                L.e(&quot;NET&quot;,e.getMessage());</div><div class="line">                if (foodTypeView!=null) &#123;</div><div class="line">                    foodTypeView.hideLoading();</div><div class="line">                    foodTypeView.showLoadFail();</div><div class="line">                    foodTypeView.toastMessage(&quot;网络连接异常&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onDestroy()&#123;</div><div class="line">        iFoodTypeModel.cancle();</div><div class="line">        foodTypeView=null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a href="https://github.com/NevLight/Fish" target="_blank" rel="external">https://github.com/NevLight/Fish</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface Presenter extends BasePresenter&#123;</span><br><span class="line">    @Override</span><br><span class="line">    void start();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void onDestroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">public class FoodTypePresenter implements FoodTypeContract.Presenter&#123;</span><br><span class="line">    private FoodTypeContract.View foodTypeView;</span><br><span class="line">    private IFoodTypeModel iFoodTypeModel;</span><br><span class="line">    public FoodTypePresenter(FoodTypeContract.View foodTypeView)&#123;</span><br><span class="line">        this.foodTypeView=foodTypeView;</span><br><span class="line">        iFoodTypeModel=new FoodTypeModel();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void start() &#123;</span><br><span class="line">        foodTypeView.hideContent();</span><br><span class="line">        foodTypeView.hideLoadFail();</span><br><span class="line">        foodTypeView.showLoading();</span><br><span class="line">        final Map&lt;String,String&gt; paraMap=new HashMap&lt;&gt;();</span><br><span class="line">        paraMap.put(&quot;key&quot;,BaseUrl.KEY);</span><br><span class="line">        iFoodTypeModel.loadList(BaseUrl.FOODTYPE, paraMap, new IFoodTypeModel.FoodTypeListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void loadSuccess(String json) &#123;</span><br><span class="line">                LoadSuccess.onSuccess(json, new LoadSuccess.LoadSuccessCallBack() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void code200(JSONObject json) throws JSONException &#123;</span><br><span class="line">                        if(foodTypeView!=null) &#123;</span><br><span class="line">                            List&lt;FoodTypeGroup&gt; list = JSON.parseArray(json.getJSONArray(&quot;result&quot;).toString(), FoodTypeGroup.class);</span><br><span class="line">                            foodTypeView.hideLoading();</span><br><span class="line">                            foodTypeView.showContent();</span><br><span class="line">                            foodTypeView.setContentData(list);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void codeOther(String errorMessage) &#123;</span><br><span class="line">                        if(foodTypeView!=null) &#123;</span><br><span class="line">                            foodTypeView.hideLoading();</span><br><span class="line">                            foodTypeView.showLoadFail();</span><br><span class="line">                            foodTypeView.toastMessage(errorMessage);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void loadFail(Exception e) &#123;</span><br><span class="line">                L.e(&quot;NET&quot;,e.getMessage());</span><br><span class="line">                if (foodTypeView!=null) &#123;</span><br><span class="line">                    foodTypeView.hideLoading();</span><br><span class="line">                    foodTypeView.showLoadFail();</span><br><span class="line">                    foodTypeView.toastMessage(&quot;网络连接异常&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onDestroy()&#123;</span><br><span class="line">        iFoodTypeModel.cancle();</span><br><span class="line">        foodTypeView=null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a href="https://github.com/NevLight/Fish" target="_blank" rel="noopener">https://github.com/NevLight/Fish</a></p>
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/学习整理/" rel="tag">#学习整理</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+            <a href="/tags/MVP/" rel="tag"># MVP</a>
           
         </div>
+      
+
+      
+      
       
 
       
@@ -521,6 +409,8 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -535,6 +425,10 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -550,13 +444,9 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/09/23/MVP模式/"
-           data-title="MVP模式" data-url="http://yoursite.com/2016/09/23/MVP模式/">
-      </div>
-    
-  </div>
+
+  
+
 
 
         </div>
@@ -572,82 +462,104 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Andy" />
-          <p class="site-author-name" itemprop="name">Andy</p>
-          <p class="site-description motion-element" itemprop="description">Something Wrong</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Andy" />
+            
+              <p class="site-author-name" itemprop="name">Andy</p>
+              <p class="site-description motion-element" itemprop="description">Something Wrong</p>
           </div>
 
-          
-            <div class="site-state-item site-state-categories">
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
               
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
+                <a href="/archives/">
               
-            </div>
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
 
           
-            <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">标签</span>
-              
-            </div>
+
+          
           
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
           
+          
+
+          
+
         </div>
-
-        
-        
-
-        
-        
-
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP结构"><span class="nav-number">2.</span> <span class="nav-text">MVP结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP案例"><span class="nav-number">3.</span> <span class="nav-text">MVP案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目地址"><span class="nav-number">4.</span> <span class="nav-text">项目地址</span></a></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -660,36 +572,50 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Andy</span>
+
+  
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -712,79 +638,115 @@ MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数�
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
 
 
 
   
   
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
-    
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"sisyphuser"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
   
-    
-    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
 
 
 
 
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
 
   
   
