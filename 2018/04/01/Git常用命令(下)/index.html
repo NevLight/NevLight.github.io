@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="基础控件,EditText," />
+  <meta name="keywords" content="Git,版本控制," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.限制输入字符的长度(1)在xml中设置12&amp;lt;EditText 	android:maxLines=&amp;quot;11&amp;quot;/&amp;gt; (2)在代码中设置1editText.setFilters(new InputFilter[]&amp;#123;new InputFilter.LengthFilter(11)&amp;#125;); (3)对超出的长度给出提示1234567891011121314">
-<meta name="keywords" content="基础控件,EditText">
+<meta name="description" content="前言在Git常用命令（上）中记录了一些添加提交文件的命令，而这篇将介绍一些关于版本回滚和分支管理的命令。">
+<meta name="keywords" content="Git,版本控制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EditText基础属性">
-<meta property="og:url" content="http://yoursite.com/2016/09/09/EditText基础属性/index.html">
+<meta property="og:title" content="Git常用命令(下)">
+<meta property="og:url" content="http://yoursite.com/2018/04/01/Git常用命令(下)/index.html">
 <meta property="og:site_name" content="SISYPHUSER">
-<meta property="og:description" content="1.限制输入字符的长度(1)在xml中设置12&amp;lt;EditText 	android:maxLines=&amp;quot;11&amp;quot;/&amp;gt; (2)在代码中设置1editText.setFilters(new InputFilter[]&amp;#123;new InputFilter.LengthFilter(11)&amp;#125;); (3)对超出的长度给出提示1234567891011121314">
+<meta property="og:description" content="前言在Git常用命令（上）中记录了一些添加提交文件的命令，而这篇将介绍一些关于版本回滚和分支管理的命令。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-03T05:17:01.700Z">
+<meta property="og:updated_time" content="2018-04-01T14:46:17.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EditText基础属性">
-<meta name="twitter:description" content="1.限制输入字符的长度(1)在xml中设置12&amp;lt;EditText 	android:maxLines=&amp;quot;11&amp;quot;/&amp;gt; (2)在代码中设置1editText.setFilters(new InputFilter[]&amp;#123;new InputFilter.LengthFilter(11)&amp;#125;); (3)对超出的长度给出提示1234567891011121314">
+<meta name="twitter:title" content="Git常用命令(下)">
+<meta name="twitter:description" content="前言在Git常用命令（上）中记录了一些添加提交文件的命令，而这篇将介绍一些关于版本回滚和分支管理的命令。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/09/EditText基础属性/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/01/Git常用命令(下)/"/>
 
 
 
 
 
-  <title>EditText基础属性 | SISYPHUSER</title>
+  <title>Git常用命令(下) | SISYPHUSER</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/09/EditText基础属性/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Git常用命令(下)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Andy">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">EditText基础属性</h1>
+          <h1 class="post-title" itemprop="name headline">Git常用命令(下)</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-09T15:35:29+08:00">
-                2016-09-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T23:59:59+08:00">
+                2018-04-01
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -342,13 +342,31 @@
       
 
       
-        <h2 id="1-限制输入字符的长度"><a href="#1-限制输入字符的长度" class="headerlink" title="1.限制输入字符的长度"></a>1.限制输入字符的长度</h2><h3 id="1-在xml中设置"><a href="#1-在xml中设置" class="headerlink" title="(1)在xml中设置"></a>(1)在xml中设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText </span><br><span class="line">	android:maxLines=&quot;11&quot;/&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-在代码中设置"><a href="#2-在代码中设置" class="headerlink" title="(2)在代码中设置"></a>(2)在代码中设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">editText.setFilters(new InputFilter[]&#123;new InputFilter.LengthFilter(11)&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="3-对超出的长度给出提示"><a href="#3-对超出的长度给出提示" class="headerlink" title="(3)对超出的长度给出提示"></a>(3)对超出的长度给出提示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">editText.addTextChangedListener(new TextWatcher() &#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void onTextChanged(CharSequence s, int start, int before, int count) &#123;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			@Override</span><br><span class="line">			public void beforeTextChanged(CharSequence s, int start, int count,</span><br><span class="line">					int after) &#123;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			@Override</span><br><span class="line">			public void afterTextChanged(Editable s) &#123;</span><br><span class="line">				if(s.length()&gt;11)&#123;</span><br><span class="line">					Toast.makeText(context, &quot;长度超出限制&quot;, Toast.LENGTH_LONG);</span><br><span class="line">					editText.setText(s.subSequence(0, s.length()-1));</span><br><span class="line">					editText.setSelection(editText.getText().length());   </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://www.sisyphuser.com/2018/03/27/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4(%E4%B8%8A)" target="_blank" rel="noopener">Git常用命令（上）</a>中记录了一些添加提交文件的命令，而这篇将介绍一些关于版本回滚和分支管理的命令。</p>
 <a id="more"></a>
-<h2 id="2-输入类型的限制"><a href="#2-输入类型的限制" class="headerlink" title="2.输入类型的限制"></a>2.输入类型的限制</h2><h3 id="1-限制只能输入指定类型"><a href="#1-限制只能输入指定类型" class="headerlink" title="(1)限制只能输入指定类型"></a>(1)限制只能输入指定类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:digits=&quot;0123456789xyzXYZ&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="2-特殊输入内容的限制"><a href="#2-特殊输入内容的限制" class="headerlink" title="(2)特殊输入内容的限制"></a>(2)特殊输入内容的限制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:inputType=&quot;text&quot;</span><br></pre></td></tr></table></figure>
-<p>其中intputType的属性有<br>    android:inputType=”textCapCharacters” 字母大写<br>    android:inputType=”textCapWords” 首字母大写<br>    android:inputType=”textCapSentences” 仅第一个字母大写<br>    android:inputType=”textAutoCorrect” 自动完成<br>    android:inputType=”textAutoComplete” 自动完成<br>    android:inputType=”textMultiLine” 多行输入<br>    android:inputType=”textImeMultiLine” 输入法多行（如果支持）<br>    android:inputType=”textNoSuggestions” 不提示<br>    android:inputType=”textUri” 网址<br>    android:inputType=”textEmailAddress” 电子邮件地址<br>    android:inputType=”textEmailSubject” 邮件主题<br>    android:inputType=”textShortMessage” 短讯<br>    android:inputType=”textLongMessage” 长信息<br>    android:inputType=”textPersonName” 人名<br>    android:inputType=”textPostalAddress” 地址<br>    android:inputType=”textPassword” 密码<br>    android:inputType=”textVisiblePassword” 可见密码<br>    android:inputType=”textWebEditText” 作为网页表单的文本<br>    android:inputType=”textFilter” 文本筛选过滤<br>    android:inputType=”textPhonetic” 拼音输入<br>    android:inputType=”number” 数字<br>    android:inputType=”numberSigned” 带符号数字格式<br>    android:inputType=”numberDecimal” 带小数点的浮点格式<br>    android:inputType=”phone” 拨号键盘<br>    android:inputType=”datetime” 时间日期<br>    android:inputType=”date” 日期键盘<br>    android:inputType=”time” 时间键盘</p>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>当发现新提交的版本有问题或者需要查看之前版本时可以使用版本回退功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure></p>
+<p>其中HEAD可以用提交时的版本号代替，可以是当前版本之前和之后的版本。<br>    这是一个危险操作，他会替换掉工作区、暂存区和本地库中的内容，工作区和暂存区的内容将无法找回，本地库中的内容可以通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;版本号&gt;</span><br></pre></td></tr></table></figure></p>
+<p>找回，版本号可以通过 git reflog 来查找。<br>使用 git reset –hard HEAD 回退后，在本地库中指针已经指向了对应的HEAD，需要把他同步到远程库。但是这时发现push到远程库失败， 原因是本地库比远程库的版本低（那是当然，刚才做了版本回退了啊），也不能执行pull，否则之前的操作就白费了。解决的办法是使用强制提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br></pre></td></tr></table></figure></p>
+<p>除了用reset之外还可以使用revert进行回退<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;版本号&gt;</span><br></pre></td></tr></table></figure></p>
+<p>reset与revert的区别在与reset 是把HEAD向后移动了一下，而revert是HEAD继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>在多人协作的开发中，需要有一个规范的工作流程。关于工作流程可以参考<a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="noopener">Git 工作流程</a>,下面将介绍一些关于工作流程中分支的用法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>创建分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>切换分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>创建并切换分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>删除分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></p>
+<p>查看全部分支，在当前分支前加上*<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>将指定分支合并到当前分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it merge --no-ff -m &quot;提交信息&quot; &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>将指定分支合并到当前分支禁用 fast forward ,用这种方式提交会在当前分支生成一个合并分支的记录，方便之后的问题排查。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>并入分支，这个和merge执行后的结果一致，但是实现的原理不同。merge只是合并分支，合并后当前分支的历史不变，只会新增目标分支的新的提交。而rebase则是先找到分支的起点，再将目标分支对应起点之后的各版本提交，然后提交当前分支对应起点的各版本。显然这会改变当前分支的历史，将不属于该分支的版本加入到当前分支中，会增加排查问题的难度。<br>并入过程中可能会多次遇到冲突，可以在解决冲突后使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure></p>
+<p>依次解决。<br>rebase 需要遵循原则，即绝不要在公共的分支上使用它。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure></p>
+<p>查看分支合并情况    </p>
+<h2 id="blame"><a href="#blame" class="headerlink" title="blame"></a>blame</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame &lt;fileName&gt;</span><br></pre></td></tr></table></figure>
+<p>用来查询该文件的修改记录</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>在每次发布版本或者新增重大功能时可以打上标签以方便以后的查询。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>创建标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>删除标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;tagName&gt;</span><br></pre></td></tr></table></figure></p>
+<p>将标签推送到远程库</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰Git教程</a><br><a href="https://my.oschina.net/fadoudou/blog/1480166" target="_blank" rel="noopener">远程仓库版本回退方法</a><br><a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="noopener">Git分支管理策略</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki/5.1-%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%EF%BC%9AMerge%E3%80%81Rebase-%E7%9A%84%E9%80%89%E6%8B%A9" target="_blank" rel="noopener">代码合并：Merge、Rebase 的选择</a></p>
 
       
     </div>
@@ -366,9 +384,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础控件/" rel="tag"># 基础控件</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
-            <a href="/tags/EditText/" rel="tag"># EditText</a>
+            <a href="/tags/版本控制/" rel="tag"># 版本控制</a>
           
         </div>
       
@@ -381,15 +399,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/27/Git常用命令(上)/" rel="next" title="Git常用命令(上)">
+                <i class="fa fa-chevron-left"></i> Git常用命令(上)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/09/关于键盘的一切/" rel="prev" title="关于键盘的一切">
-                关于键盘的一切 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -525,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-限制输入字符的长度"><span class="nav-number">1.</span> <span class="nav-text">1.限制输入字符的长度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-在xml中设置"><span class="nav-number">1.1.</span> <span class="nav-text">(1)在xml中设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在代码中设置"><span class="nav-number">1.2.</span> <span class="nav-text">(2)在代码中设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-对超出的长度给出提示"><span class="nav-number">1.3.</span> <span class="nav-text">(3)对超出的长度给出提示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-输入类型的限制"><span class="nav-number">2.</span> <span class="nav-text">2.输入类型的限制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-限制只能输入指定类型"><span class="nav-number">2.1.</span> <span class="nav-text">(1)限制只能输入指定类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-特殊输入内容的限制"><span class="nav-number">2.2.</span> <span class="nav-text">(2)特殊输入内容的限制</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本回退"><span class="nav-number">2.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">3.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blame"><span class="nav-number">4.</span> <span class="nav-text">blame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">5.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
