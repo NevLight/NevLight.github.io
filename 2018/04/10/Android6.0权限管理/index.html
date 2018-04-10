@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android基础,权限管理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言Android6.0(API 23)引入了一种新的权限模式，即运行时应用权限管理。这种模式让用户能够更好地了解和控制权限，用户可为所安装的各个应用分别授予或撤销权限。对于开发者来说意味着在使用对应权限功能时必须要先判断权限是否已经赋予了。">
+<meta name="keywords" content="Android基础,权限管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android6.0权限管理">
+<meta property="og:url" content="http://yoursite.com/2018/04/10/Android6.0权限管理/index.html">
+<meta property="og:site_name" content="SISYPHUSER">
+<meta property="og:description" content="前言Android6.0(API 23)引入了一种新的权限模式，即运行时应用权限管理。这种模式让用户能够更好地了解和控制权限，用户可为所安装的各个应用分别授予或撤销权限。对于开发者来说意味着在使用对应权限功能时必须要先判断权限是否已经赋予了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/%E5%8D%B1%E9%99%A9%E6%9D%83%E9%99%90.png">
+<meta property="og:updated_time" content="2018-04-10T15:31:32.995Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android6.0权限管理">
+<meta name="twitter:description" content="前言Android6.0(API 23)引入了一种新的权限模式，即运行时应用权限管理。这种模式让用户能够更好地了解和控制权限，用户可为所安装的各个应用分别授予或撤销权限。对于开发者来说意味着在使用对应权限功能时必须要先判断权限是否已经赋予了。">
+<meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/%E5%8D%B1%E9%99%A9%E6%9D%83%E9%99%90.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/10/Android6.0权限管理/"/>
+
+
+
+
+
+  <title>Android6.0权限管理 | SISYPHUSER</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SISYPHUSER</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/Android6.0权限管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SISYPHUSER">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android6.0权限管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T23:59:59+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Android6.0(API 23)引入了一种新的权限模式，即运行时应用权限管理。这种模式让用户能够更好地了解和控制权限，用户可为所安装的各个应用分别授予或撤销权限。对于开发者来说意味着在使用对应权限功能时必须要先判断权限是否已经赋予了。<br><a id="more"></a></p>
+<h2 id="危险权限"><a href="#危险权限" class="headerlink" title="危险权限"></a>危险权限</h2><p>对于权限的管理，并不是所有的权限都需要用户允许的，只有一部分危险权限需要许可。可以参照下图<br><img align="middle" src="http://7xtcmn.com1.z0.glb.clouddn.com/%E5%8D%B1%E9%99%A9%E6%9D%83%E9%99%90.png"></p>
+<h2 id="检查、请求权限"><a href="#检查、请求权限" class="headerlink" title="检查、请求权限"></a>检查、请求权限</h2><ol>
+<li>在AndroidManifest中添加所需的权限</li>
+<li><p>在使用危险权限功能前检查权限的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当没有权限(检查权限状态不为PackageManager.PERMISSION_GRANTED)时请求权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requestPermissions(new String[]&#123;Manifest.permission.ACCESS_COARSE_LOCATION&#125;, 1);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在用户操作回掉中处理允许和拒绝操作的逻辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;</span><br><span class="line">    super.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    switch (requestCode) &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                Toast.makeText(this, &quot;允许定位权限&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                Toast.makeText(this, &quot;拒绝定位权限！！！&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中在第三步中requestPermissions()可以一次请求多个权限，对于那些用户已经允许和拒绝并且勾选了不再提示的权限会直接执行回掉，并不会让用户再次选择授权。所以对于那些必须要要权限才能使用的功能可以在用户拒绝之后让用户在设置中手动打开权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);</span><br><span class="line">intent.setData(Uri.fromParts(&quot;package&quot;, getPackageName(), null));</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h2 id="对于特殊机型的适配"><a href="#对于特殊机型的适配" class="headerlink" title="对于特殊机型的适配"></a>对于特殊机型的适配</h2><p>由于国内很多手机厂商早在Android6.0之前就有了自己的权限管理系统，在Android6.0之后有一些还保留着原有的权限管理系统。这导致了明明用checkSelfPermission()检查有权限但还是还是无法使用权限功能。例如VIVO在所有情况下checkSelfPermission()都是返回有权限，但他在使用到有关权限操作时会自动提示用户权限许可。不过这种情况下调用并不会导致系统报错，而且第三方厂商也做了使用权限的提示。下面以小米为例判断是否在小米中打开权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">*检查是由有权限</span><br><span class="line">**/</span><br><span class="line">private static boolean checkOpsPermission(Context context, String permission) &#123;</span><br><span class="line">    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);</span><br><span class="line">            String opsName = AppOpsManager.permissionToOp(permission);</span><br><span class="line">            if (opsName == null) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            int opsMode = appOpsManager.checkOpNoThrow(opsName, android.os.Process.myUid(), context.getPackageName());</span><br><span class="line">            return opsMode == AppOpsManager.MODE_ALLOWED;</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 打开小米权限设置</span><br><span class="line"> */</span><br><span class="line">public void openPermissionSetting(Activity activity) &#123;</span><br><span class="line">    String miuiVersion = getMiuiVersion();</span><br><span class="line">    Intent intent = null;</span><br><span class="line">    if (&quot;V5&quot;.equals(miuiVersion)) &#123;</span><br><span class="line">        Uri packageURI = Uri.parse(&quot;package:&quot; + activity.getApplicationInfo().packageName);</span><br><span class="line">        intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);</span><br><span class="line">    &#125; else if (&quot;V6&quot;.equals(miuiVersion) || &quot;V7&quot;.equals(miuiVersion)) &#123;</span><br><span class="line">        intent = new Intent(&quot;miui.intent.action.APP_PERM_EDITOR&quot;);</span><br><span class="line">        intent.setClassName(&quot;com.miui.securitycenter&quot;, &quot;com.miui.permcenter.permissions.AppPermissionsEditorActivity&quot;);</span><br><span class="line">        intent.putExtra(&quot;extra_pkgname&quot;, activity.getPackageName());</span><br><span class="line">    &#125; else if (&quot;V8&quot;.equals(miuiVersion) || &quot;V9&quot;.equals(miuiVersion)) &#123;</span><br><span class="line">        intent = new Intent(&quot;miui.intent.action.APP_PERM_EDITOR&quot;);</span><br><span class="line">        intent.setClassName(&quot;com.miui.securitycenter&quot;, &quot;com.miui.permcenter.permissions.PermissionsEditorActivity&quot;);</span><br><span class="line">        intent.putExtra(&quot;extra_pkgname&quot;, activity.getPackageName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (null != intent)</span><br><span class="line">        activity.startActivity(intent);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 获取MIUI版本</span><br><span class="line"> */</span><br><span class="line">public String getMiuiVersion() &#123;</span><br><span class="line">    String line;</span><br><span class="line">    BufferedReader input = null;</span><br><span class="line">    try &#123;</span><br><span class="line">        Process p = Runtime.getRuntime().exec(&quot;getprop ro.miui.ui.version.name&quot;);</span><br><span class="line">        input = new BufferedReader(new InputStreamReader(p.getInputStream()), 1024);</span><br><span class="line">        line = input.readLine();</span><br><span class="line">        input.close();</span><br><span class="line">    &#125; catch (IOException ex) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        if (input != null) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                input.close();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return line;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/lmj623565791/article/details/50709663" target="_blank" rel="noopener">Android 6.0 运行时权限处理完全解析</a><br><a href="https://developer.android.com/training/permissions/best-practices.html?hl=zh-cn#testing" target="_blank" rel="noopener">权限最佳做法</a><br><a href="https://blog.csdn.net/lupengfei1009/article/details/78140047#%E5%B0%8F%E7%B1%B3%E6%9D%83%E9%99%90%E7%89%B9%E6%AE%8A%E5%A4%84%E7%90%86" target="_blank" rel="noopener">Android 6.0动态权限及小米（MIUI）权限的特殊处理</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android基础/" rel="tag"># Android基础</a>
+          
+            <a href="/tags/权限管理/" rel="tag"># 权限管理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/01/Git常用命令(下)/" rel="next" title="Git常用命令(下)">
+                <i class="fa fa-chevron-left"></i> Git常用命令(下)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Andy" />
+            
+              <p class="site-author-name" itemprop="name">Andy</p>
+              <p class="site-description motion-element" itemprop="description">Something Wrong</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#危险权限"><span class="nav-number">2.</span> <span class="nav-text">危险权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查、请求权限"><span class="nav-number">3.</span> <span class="nav-text">检查、请求权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于特殊机型的适配"><span class="nav-number">4.</span> <span class="nav-text">对于特殊机型的适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
