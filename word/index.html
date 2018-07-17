@@ -70,12 +70,18 @@
 					}
 				);
 
-				$("img.arrow").click(
+				$("img.next").click(
 					function(){
 						now_page++;
 						$(".container").animate({"top":now_page*-100+"%"},600);
 					}
 				);
+
+				$(".sate").css("width",$("div.container").width())
+
+				$(window).resize(function() {
+					$(".sate").css("width",$("div.container").width())
+				});
 
 			});
 
@@ -83,11 +89,12 @@
 	</head>
 
 	<body onmousewheel="return false;" >
-		<div class="container" style="top: 0%;">
-			<div class="page" style="display:none">
+		<div class="container" style="top: 0%;" >
+			<div class="page" style="display: none;">
 				<CENTER>
+					<p class="sate"/>
 					<img class="pic" src="https://cdn.dribbble.com/users/1520699/screenshots/4802182/ezgif.com-optimize__5__1x.gif"/>
-					<p class="content">内容4内容4内容4内容4内容4内容4内容4内容4内容4内容4内容4内容4内容4</p>
+					<p class="content">内容4内容4内容4内容4内容4</p>
 					<p class="note">
 						<a class="note" href="https://www.baidu.com" target="_blank">
 							-廿八
@@ -95,13 +102,14 @@
 					</p>
 					<p class="time">7.12</p>
 				</CENTER>
-				<img class="arrow" src="arrow.png" >
+				<img class="next" src="next.png" >
 			</div>
 			<div class="page">
 				<CENTER>
+					<p class="sate"/>
 					<p class="nopic">那一天我二十一岁，在我一生的黄金时代，我有好多奢望。我想爱，想吃，还想在一瞬间变成天上半明半暗的云。后来我才知道，生活就是个缓慢受锤的过程，人一天天老下去，奢望也一天天消失，最后变得像挨了锤的牛一样。可是我过二十一岁生日时没有预见到这一点。我觉得自己会永远生猛下去，什么也锤不了我。</p>
 					<p class="note">
-						<a class="note" href="https://book.douban.com/subject/1082406/">《黄金时代》</a>
+						<a class="note" href="https://book.douban.com/subject/1082406/" target="_blank">《黄金时代》</a>
 					</p>
 					<p class="time">7.13</p>
 				</CENTER>
