@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="SISYPHUSER">
 <meta property="og:description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。 MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_app.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.png">
-<meta property="og:updated_time" content="2018-06-28T05:42:44.049Z">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/mvp_mvp.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/mvp_app.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/mvp_object.png">
+<meta property="og:updated_time" content="2018-10-23T02:44:29.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVP模式">
 <meta name="twitter:description" content="前言MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。 MVP结构MVP主要由Model、View、Presenter三部分构成。Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；View:即Activity和Fragment，负责页面的绘制，刷新；Presenter:负责连">
-<meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png">
+<meta name="twitter:image" content="https://www.sisyphuser.cn/image/mvp_mvp.png">
 
 
 
@@ -392,11 +392,11 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>MVP是一种MVC的变形，相比MVC它大大减少了Activity的责任将主要的逻辑操作集中在Presenter层中，从而使得MVP的代码结构变得更清晰。</p>
 <h2 id="MVP结构"><a href="#MVP结构" class="headerlink" title="MVP结构"></a>MVP结构</h2><p>MVP主要由Model、View、Presenter三部分构成。<br>Model:负责数据的处理，即数据的获取、存储、解析、分发、修改等操作；<br>View:即Activity和Fragment，负责页面的绘制，刷新；<br>Presenter:负责连接Model层和View层，从Model中获取数据然后控制View刷新页面，是主要逻辑操作的地方。</p>
-<p>这里借用<a href="https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android" target="_blank" rel="noopener">此文</a>的一张图片来表示Model、View和Presenter三者的关系<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_mvp.png" alt="mvp"></p>
+<p>这里借用<a href="https://github.com/konmik/konmik.github.io/wiki/Introduction-to-Model-View-Presenter-on-Android" target="_blank" rel="noopener">此文</a>的一张图片来表示Model、View和Presenter三者的关系<br><img src="https://www.sisyphuser.cn/image/mvp_mvp.png" alt="mvp"></p>
 <a id="more"></a>
 <h2 id="MVP案例"><a href="#MVP案例" class="headerlink" title="MVP案例"></a>MVP案例</h2><p>这是一个简单的菜谱App，主要包括列表和详情，下面以列表页威力展示一下MVP的运用。</p>
-<p>列表页视图:<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_app.png" alt="App"></p>
-<p>项目结构:<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/mvp_object.png" alt="object"></p>
+<p>列表页视图:<br><img src="https://www.sisyphuser.cn/image/mvp_app.png" alt="App"></p>
+<p>项目结构:<br><img src="https://www.sisyphuser.cn/image/mvp_object.png" alt="object"></p>
 <p>(1)Model层<br>这里的Model主要负责从网络获取数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface ITypeListModel &#123;</span><br><span class="line">    void loadList(String url, Map&lt;String,String&gt; paraMap, TypeListListener listener);</span><br><span class="line">    void cancle();</span><br><span class="line"></span><br><span class="line">    interface TypeListListener&#123;</span><br><span class="line">        void loadSuccess(String json,Map&lt;String,String&gt; hMap);</span><br><span class="line">        void loadFail(Exception e,Map&lt;String,String&gt; hMap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class TypeListModel implements ITypeListModel &#123;</span><br><span class="line"></span><br><span class="line">    private RequestCall call;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void loadList(String url, final Map&lt;String, String&gt; paraMap, final ITypeListModel.TypeListListener listener) &#123;</span><br><span class="line">        call= OkHttpUtils.post()</span><br><span class="line">                .url(url)</span><br><span class="line">                .params(paraMap)</span><br><span class="line">                .build();</span><br><span class="line">        call.execute(new StringCallback() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Call call, Exception e, int id) &#123;</span><br><span class="line">                listener.loadFail(e,paraMap);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onResponse(String response, int id) &#123;</span><br><span class="line">                listener.loadSuccess(response,paraMap);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void cancle() &#123;</span><br><span class="line">        if(call!=null)</span><br><span class="line">            call.cancel();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>(2)View层<br>View层管理点击页面上控件的状态和控件的点击事件<br>我将View和Presenter的两个接口都放在了Contract中方便管理</p>

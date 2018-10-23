@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="SISYPHUSER">
 <meta property="og:description" content="前言Git是一个优秀分布式版本控制系统，可以有效、高速的处理项目版本管理。在日常开发过程中经常会与之打交道，所以在下面记录了一些常用的Git命令。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/github_set_ssh.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/%E5%B7%A5%E4%BD%9C%E5%8C%BA_%E6%9A%82%E5%AD%98%E5%8C%BA.png">
-<meta property="og:updated_time" content="2018-06-28T05:42:44.043Z">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/github_set_ssh.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/%E5%B7%A5%E4%BD%9C%E5%8C%BA_%E6%9A%82%E5%AD%98%E5%8C%BA.png">
+<meta property="og:updated_time" content="2018-10-23T02:43:48.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令(上)">
 <meta name="twitter:description" content="前言Git是一个优秀分布式版本控制系统，可以有效、高速的处理项目版本管理。在日常开发过程中经常会与之打交道，所以在下面记录了一些常用的Git命令。">
-<meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/github_set_ssh.png">
+<meta name="twitter:image" content="https://www.sisyphuser.cn/image/github_set_ssh.png">
 
 
 
@@ -393,7 +393,7 @@
 <a id="more"></a>
 <h2 id="创建ssh的公钥和私钥"><a href="#创建ssh的公钥和私钥" class="headerlink" title="创建ssh的公钥和私钥"></a>创建ssh的公钥和私钥</h2><p>在git bush中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email@163.com&quot;</span><br></pre></td></tr></table></figure></p>
 <p>之后会需要输入保存key个文件位置和密码，这些都可以直接回车，默认的可以位置在C://用户/user/.ssh<br>其中id_rsa.pub为公钥，id_rsa为私钥</p>
-<h2 id="以GitHub为例上传公钥"><a href="#以GitHub为例上传公钥" class="headerlink" title="以GitHub为例上传公钥"></a>以GitHub为例上传公钥</h2><p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/github_set_ssh.png" align="middle"><br>再将公钥中的内容全部复制提交就可以了</p>
+<h2 id="以GitHub为例上传公钥"><a href="#以GitHub为例上传公钥" class="headerlink" title="以GitHub为例上传公钥"></a>以GitHub为例上传公钥</h2><p><img src="https://www.sisyphuser.cn/image/github_set_ssh.png" align="middle"><br>再将公钥中的内容全部复制提交就可以了</p>
 <h2 id="设置git提交时的个人信息"><a href="#设置git提交时的个人信息" class="headerlink" title="设置git提交时的个人信息"></a>设置git提交时的个人信息</h2><p>查看git基本信息配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure></p>
 <p>设置显示的用户名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br></pre></td></tr></table></figure></p>
 <p>设置显示的邮箱<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;email@163.com&quot;</span><br></pre></td></tr></table></figure></p>
@@ -440,7 +440,7 @@
 <li>将版本库中全部/指定文件替换暂存区的文件而工作区不做更改</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD . / git reset HEAD &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>可以用一张图来直观地展示<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/%E5%B7%A5%E4%BD%9C%E5%8C%BA_%E6%9A%82%E5%AD%98%E5%8C%BA.png" align="middle"></p>
+<p>可以用一张图来直观地展示<br><img src="https://www.sisyphuser.cn/image/%E5%B7%A5%E4%BD%9C%E5%8C%BA_%E6%9A%82%E5%AD%98%E5%8C%BA.png" align="middle"></p>
 <h2 id="一些查看Git状态的命令"><a href="#一些查看Git状态的命令" class="headerlink" title="一些查看Git状态的命令"></a>一些查看Git状态的命令</h2><ul>
 <li>查看工作区修改的内容</li>
 </ul>

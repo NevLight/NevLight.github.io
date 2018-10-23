@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="SISYPHUSER">
 <meta property="og:description" content="日/夜模式切换作为一个App的基本功能经常会被使用到，接下来就举出一些常用的日/夜模式切换的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/UIMode_1.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/UIMode_2.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/UIMode_3.gif">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/Lib.gif">
-<meta property="og:updated_time" content="2018-06-28T05:42:44.059Z">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/UIMode_1.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/UIMode_2.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/UIMode_3.gif">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/Lib.gif">
+<meta property="og:updated_time" content="2018-10-23T02:45:27.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日&#x2F;夜模式切换">
 <meta name="twitter:description" content="日/夜模式切换作为一个App的基本功能经常会被使用到，接下来就举出一些常用的日/夜模式切换的方法">
-<meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/UIMode_1.png">
+<meta name="twitter:image" content="https://www.sisyphuser.cn/image/UIMode_1.png">
 
 
 
@@ -397,8 +397,8 @@
 <ul>
 <li><em>资源存放的路径</em></li>
 </ul>
-<p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/UIMode_1.png" alt="pic"></p>
-<p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/UIMode_2.png" alt="pic"></p>
+<p><img src="https://www.sisyphuser.cn/image/UIMode_1.png" alt="pic"></p>
+<p><img src="https://www.sisyphuser.cn/image/UIMode_2.png" alt="pic"></p>
 <ul>
 <li><em>切换资源的方法</em></li>
 </ul>
@@ -407,7 +407,7 @@
 <ul>
 <li><em>最终效果</em></li>
 </ul>
-<p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/UIMode_3.gif" alt="gif"></p>
+<p><img src="https://www.sisyphuser.cn/image/UIMode_3.gif" alt="gif"></p>
 <ul>
 <li><em>存在问题</em></li>
 </ul>
@@ -435,7 +435,7 @@
 </ul>
 <p>与UIMode方法相同由于需要recreate(),会重绘Activity导致屏幕闪烁，并且在有比较多的属性需要修改时会导致style比较复杂</p>
 <p>为了决解改变日/夜模式后屏幕闪烁的问题，我看了不少博客，终于找到了一个比较符合要求的项目，能够实现uiMode方法的不重建Activity切换日/夜模式。<br>项目地址：<a href="https://github.com/geminiwen/SkinSprite" target="_blank" rel="noopener">https://github.com/geminiwen/SkinSprite</a></p>
-<p>效果：<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/Lib.gif" alt="gif"></p>
+<p>效果：<br><img src="https://www.sisyphuser.cn/image/Lib.gif" alt="gif"></p>
 <p>具体思路是在Activity创建View的过程中注入自己的代码。<br>接下来分析一下这个lib的具体代码</p>
 <ul>
 <li><em>首先是SkinnableActivity，继承自AppCompatActivity，在这个Activity中对View的创建进行拦截，我们主要关注三个方法</em></li>

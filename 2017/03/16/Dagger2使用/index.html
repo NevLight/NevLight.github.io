@@ -90,10 +90,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/codepath/android_guides/master/images/dagger_dependency.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/codepath/android_guides/master/images/dagger_subcomponent.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/codepath/android_guides/master/images/subcomponent_builders.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/subcomponent_1.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/subcomponent_2.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/subcomponent_3.png">
-<meta property="og:updated_time" content="2018-06-28T05:42:44.040Z">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/subcomponent_1.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/subcomponent_2.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/subcomponent_3.png">
+<meta property="og:updated_time" content="2018-10-23T02:43:28.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger2使用">
 <meta name="twitter:description" content="dagger2是一个依赖注入框架，可以用于功能模块的解耦，非常适合于和MVP搭配使用，下面就来介绍一下dagger2一些使用方式">
@@ -453,7 +453,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@UserScope</span><br><span class="line">@Subcomponent(modules = BModule.class)</span><br><span class="line">public interface MainComponent &#123;</span><br><span class="line">    void infect(MainActivity a);</span><br><span class="line">&#125;</span><br><span class="line">@Singleton</span><br><span class="line">@Component(modules = CModule.class)</span><br><span class="line">public interface AppComponent &#123;</span><br><span class="line">    MainComponent m(BModule b);</span><br><span class="line">&#125;</span><br><span class="line">DaggerAppComponent.builder()</span><br><span class="line">	.cModule(new CModule())</span><br><span class="line">	.build()</span><br><span class="line">	.m(new BModule())</span><br><span class="line">	.infect(this);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>继承方式<br><img src="https://raw.githubusercontent.com/codepath/android_guides/master/images/subcomponent_builders.png" alt="pic2"><br>这种方式比较复杂，需要Dagger2版本在2.7及以上，我在实现过程中总是出现一些奇怪的问题，在这里我只把Dependency Injection with Dagger 2中的代码贴上，等过段时间再回来研究<br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/subcomponent_1.png" alt="1"><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/subcomponent_2.png" alt="2"><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/subcomponent_3.png" alt="3"></li>
+<li>继承方式<br><img src="https://raw.githubusercontent.com/codepath/android_guides/master/images/subcomponent_builders.png" alt="pic2"><br>这种方式比较复杂，需要Dagger2版本在2.7及以上，我在实现过程中总是出现一些奇怪的问题，在这里我只把Dependency Injection with Dagger 2中的代码贴上，等过段时间再回来研究<br><img src="https://www.sisyphuser.cn/image/subcomponent_1.png" alt="1"><br><img src="https://www.sisyphuser.cn/image/subcomponent_2.png" alt="2"><br><img src="https://www.sisyphuser.cn/image/subcomponent_3.png" alt="3"></li>
 </ul>
 <p><strong>参考博客：</strong><br><a href="https://guides.codepath.com/android/Dependency-Injection-with-Dagger-2#proguard" target="_blank" rel="noopener">Dependency Injection with Dagger 2</a><br><a href="http://www.cnblogs.com/all88/p/5788556.html" target="_blank" rel="noopener">浅析Dagger2的使用</a><br><a href="http://www.2cto.com/kf/201604/499397.html" target="_blank" rel="noopener">关于依赖注入框架dagger2的使用和理解</a><br><a href="http://www.jianshu.com/p/cd2c1c9f68d4" target="_blank" rel="noopener">Android：dagger2让你爱不释手-基础依赖注入框架篇</a><br><a href="http://www.jianshu.com/p/1d42d2e6f4a5" target="_blank" rel="noopener">Android：dagger2让你爱不释手-重点概念讲解、融合篇</a><br><a href="http://www.jianshu.com/p/65737ac39c44" target="_blank" rel="noopener">Android：dagger2让你爱不释手-终结篇</a></p>
 

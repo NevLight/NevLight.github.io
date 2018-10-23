@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="SISYPHUSER">
 <meta property="og:description" content="Glide是一款bumptech发布，并被Google推荐使用的图片加载库。项目地址是https://github.com/bumptech/glide，本文不会对Glide的内存占用和性能进行分析，只是介绍Glide的基本用法。 导入库12compile &amp;apos;com.github.bumptech.glide:glide:3.7.0&amp;apos;compile &amp;apos;com.andr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/scaltype%281%29.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_1.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_2.png">
-<meta property="og:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/circle.png">
-<meta property="og:updated_time" content="2018-06-28T05:42:44.046Z">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/scaltype%281%29.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/thumb_1.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/thumb_2.png">
+<meta property="og:image" content="https://www.sisyphuser.cn/image/circle.png">
+<meta property="og:updated_time" content="2018-10-23T02:44:08.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Glide图片加载">
 <meta name="twitter:description" content="Glide是一款bumptech发布，并被Google推荐使用的图片加载库。项目地址是https://github.com/bumptech/glide，本文不会对Glide的内存占用和性能进行分析，只是介绍Glide的基本用法。 导入库12compile &amp;apos;com.github.bumptech.glide:glide:3.7.0&amp;apos;compile &amp;apos;com.andr">
-<meta name="twitter:image" content="http://7xtcmn.com1.z0.glb.clouddn.com/scaltype%281%29.png">
+<meta name="twitter:image" content="https://www.sisyphuser.cn/image/scaltype%281%29.png">
 
 
 
@@ -417,7 +417,7 @@
 <li><strong>图片格式设置</strong><br>Glide中给了两种图片的放入格式，需要注意的是使用Glide的图片格式时就不要在ImageView中设置scaleType了，否则可能会使Glide的图片格式失效。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.centerCrop()		//自适应控件大小</span><br><span class="line">.fitCenter()		//适应图片大小</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/scaltype%281%29.png" alt="type"></p>
+<p><img src="https://www.sisyphuser.cn/image/scaltype%281%29.png" alt="type"></p>
 <ul>
 <li><strong>加载优先级</strong></li>
 </ul>
@@ -426,13 +426,13 @@
 <li><strong>缩略图</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(this)</span><br><span class="line">               .load(&quot;http://my.csdn.net/uploads/201205/06/1336311585_2632.gif&quot;)</span><br><span class="line">               .thumbnail(0.1f)</span><br><span class="line">               .into(iv);</span><br></pre></td></tr></table></figure>
-<p>利用thumbnail(0.1f)来设置先加载0.1f的缩略图显示，然后再加载需要的图<br><strong><em>缩略图</em></strong><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_1.png" alt=""><br><strong><em>原图</em></strong><br><img src="http://7xtcmn.com1.z0.glb.clouddn.com/thumb_2.png" alt=""></p>
+<p>利用thumbnail(0.1f)来设置先加载0.1f的缩略图显示，然后再加载需要的图<br><strong><em>缩略图</em></strong><br><img src="https://www.sisyphuser.cn/image/thumb_1.png" alt=""><br><strong><em>原图</em></strong><br><img src="https://www.sisyphuser.cn/image/thumb_2.png" alt=""></p>
 <ul>
 <li><strong>自定义图片转化</strong><br>这里以制作圆形头像为例介绍.transform()的使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(context)</span><br><span class="line">               .load(url)</span><br><span class="line">               .transform(new CircleTransform(context))</span><br><span class="line">               .into(imageView);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public class CircleTransform extends BitmapTransformation &#123;</span><br><span class="line">    public CircleTransform(Context context) &#123;</span><br><span class="line">        super(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) &#123;</span><br><span class="line">        return circleCrop(pool,toTransform);</span><br><span class="line">    &#125;</span><br><span class="line">    private  Bitmap circleCrop(BitmapPool pool, Bitmap source) &#123;</span><br><span class="line"></span><br><span class="line">        int size = Math.min(source.getWidth(), source.getHeight());</span><br><span class="line"></span><br><span class="line">        int width = (source.getWidth() - size) / 2;</span><br><span class="line">        int height = (source.getHeight() - size) / 2;</span><br><span class="line"></span><br><span class="line">        Bitmap bitmap = pool.get(size, size, Bitmap.Config.ARGB_8888);</span><br><span class="line">        if (bitmap == null) &#123;</span><br><span class="line">            bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Canvas canvas = new Canvas(bitmap);</span><br><span class="line">        Paint paint = new Paint();</span><br><span class="line">        BitmapShader shader =</span><br><span class="line">                new BitmapShader(source, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);</span><br><span class="line">        if (width != 0 || height != 0) &#123;</span><br><span class="line">            // source isn&apos;t square, move viewport to center</span><br><span class="line">            Matrix matrix = new Matrix();</span><br><span class="line">            matrix.setTranslate(-width, -height);</span><br><span class="line">            shader.setLocalMatrix(matrix);</span><br><span class="line">        &#125;</span><br><span class="line">        paint.setShader(shader);</span><br><span class="line">        paint.setAntiAlias(true);</span><br><span class="line"></span><br><span class="line">        float r = size / 2f;</span><br><span class="line">        canvas.drawCircle(r, r, r, paint);</span><br><span class="line"></span><br><span class="line">        return bitmap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getId() &#123;</span><br><span class="line">        return getClass().getName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xtcmn.com1.z0.glb.clouddn.com/circle.png" alt=""></p>
+<p><img src="https://www.sisyphuser.cn/image/circle.png" alt=""></p>
 <ul>
 <li><strong>回调bitmap</strong></li>
 </ul>
