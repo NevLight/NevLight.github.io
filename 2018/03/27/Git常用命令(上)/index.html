@@ -391,69 +391,78 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Git是一个优秀分布式版本控制系统，可以有效、高速的处理项目版本管理。在日常开发过程中经常会与之打交道，所以在下面记录了一些常用的Git命令。</p>
 <a id="more"></a>
-<h2 id="创建ssh的公钥和私钥"><a href="#创建ssh的公钥和私钥" class="headerlink" title="创建ssh的公钥和私钥"></a>创建ssh的公钥和私钥</h2><p>在git bush中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email@163.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p>之后会需要输入保存key个文件位置和密码，这些都可以直接回车，默认的可以位置在C://用户/user/.ssh<br>其中id_rsa.pub为公钥，id_rsa为私钥</p>
-<h2 id="以GitHub为例上传公钥"><a href="#以GitHub为例上传公钥" class="headerlink" title="以GitHub为例上传公钥"></a>以GitHub为例上传公钥</h2><p><img src="https://www.sisyphuser.cn/image/github_set_ssh.png" align="middle"><br>再将公钥中的内容全部复制提交就可以了</p>
-<h2 id="设置git提交时的个人信息"><a href="#设置git提交时的个人信息" class="headerlink" title="设置git提交时的个人信息"></a>设置git提交时的个人信息</h2><p>查看git基本信息配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure></p>
-<p>设置显示的用户名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br></pre></td></tr></table></figure></p>
-<p>设置显示的邮箱<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;email@163.com&quot;</span><br></pre></td></tr></table></figure></p>
-<h2 id="关联远程库"><a href="#关联远程库" class="headerlink" title="关联远程库"></a>关联远程库</h2><p>首先我们需要在GitHub上创建一个git库，这个很简单只要选择New repository然后按提示下一步就可以了。<br>现在有了一个远程库，需要将本地的文件夹与他关联起来。<br>注意在这里有两个远程库的地址 分别是”<a href="https://github.com...&quot;和&quot;git@github.com...&quot;。" target="_blank" rel="noopener">https://github.com...&quot;和&quot;git@github.com...&quot;。</a><br>这两者的区别是”<a href="https://github.com...&quot;在每次执行需要权限的操作时都需要输入用户名和密码，而&quot;git@github.com...&quot;则需要先配置好SSH这就是第二部的操作，所以我选择使用&quot;git@github.com...&quot;来关联远程库。" target="_blank" rel="noopener">https://github.com...&quot;在每次执行需要权限的操作时都需要输入用户名和密码，而&quot;git@github.com...&quot;则需要先配置好SSH这就是第二部的操作，所以我选择使用&quot;git@github.com...&quot;来关联远程库。</a><br>有两种关联的方法：</p>
-<p> 1) 如果没有本地文件可以直接clone<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com...</span><br></pre></td></tr></table></figure></p>
-<p> 2) 如果有本地文件则可以在文件所在文件夹中执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></p>
-<p>创建本地库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com...</span><br></pre></td></tr></table></figure></p>
-<p>关联远程库</p>
-<h2 id="添加一个文件"><a href="#添加一个文件" class="headerlink" title="添加一个文件"></a>添加一个文件</h2><p>需要新增或修改一个文件时需要执行两部操作：add和commit<br>add:将工作区添加一个新建或修改的文件到暂存区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
-<p>添加特定的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add --all</span><br><span class="line">git add -A</span><br></pre></td></tr></table></figure></p>
-<p>添加所有的文件<br>commit:将暂存区的文件提交到版本库中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;提交说明&quot;</span><br></pre></td></tr></table></figure></p>
-<p>当然也可以把两部操作合并<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -am &quot;提交说明&quot;</span><br></pre></td></tr></table></figure></p>
-<p>但是这个只适用于添加文件修改，对于新增的文件并不能添加。</p>
-<h2 id="关于-gitignore的使用"><a href="#关于-gitignore的使用" class="headerlink" title="关于.gitignore的使用"></a>关于.gitignore的使用</h2><p>.gitignore其实就是一个git的忽略文件。<br>一般的匹配规则有三种：</p>
+
+<h2 id="创建ssh的公钥和私钥"><a href="#创建ssh的公钥和私钥" class="headerlink" title="创建ssh的公钥和私钥"></a>创建ssh的公钥和私钥</h2><p>在git bush中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email@163.com&quot;</span><br></pre></td></tr></table></figure>
+<p>之后会需要输入保存key个文件位置和密码，这些都可以直接回车，默认的可以位置在C://用户/user/.ssh<br>其中id_rsa.pub为公钥，id_rsa为私钥<br>以GitHub为例上传公钥<br>–<br><img src="https://www.sisyphuser.cn/image/github_set_ssh.png" align="middle" /><br>再将公钥中的内容全部复制提交就可以了<br>设置git提交时的个人信息<br>–<br>查看git基本信息配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
+<p>设置显示的用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br></pre></td></tr></table></figure>
+<p>设置显示的邮箱</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;email@163.com&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="关联远程库"><a href="#关联远程库" class="headerlink" title="关联远程库"></a>关联远程库</h2><p>首先我们需要在GitHub上创建一个git库，这个很简单只要选择New repository然后按提示下一步就可以了。<br>现在有了一个远程库，需要将本地的文件夹与他关联起来。<br>注意在这里有两个远程库的地址 分别是”<a href="https://github.com...&quot%3B%E5%92%8C&quot%3Bgit@github.com...&quot;./" target="_blank" rel="noopener">https://github.com...&quot;和&quot;git@github.com...&quot;。</a><br>这两者的区别是”<a href="https://github.com...&quot%3B%E5%9C%A8%E6%AF%8F%E6%AC%A1%E6%89%A7%E8%A1%8C%E9%9C%80%E8%A6%81%E6%9D%83%E9%99%90%E7%9A%84%E6%93%8D%E4%BD%9C%E6%97%B6%E9%83%BD%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%EF%BC%8C%E8%80%8C&quot%3Bgit%40github.com...&quot%3B%E5%88%99%E9%9C%80%E8%A6%81%E5%85%88%E9%85%8D%E7%BD%AE%E5%A5%BDSSH%E8%BF%99%E5%B0%B1%E6%98%AF%E7%AC%AC%E4%BA%8C%E9%83%A8%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%8C%E6%89%80%E4%BB%A5%E6%88%91%E9%80%89%E6%8B%A9%E4%BD%BF%E7%94%A8&quot%3Bgit@github.com...&quot;来关联远程库./" target="_blank" rel="noopener">https://github.com...&quot;在每次执行需要权限的操作时都需要输入用户名和密码，而&quot;git@github.com...&quot;则需要先配置好SSH这就是第二部的操作，所以我选择使用&quot;git@github.com...&quot;来关联远程库。</a><br>有两种关联的方法：</p>
+<p> 1) 如果没有本地文件可以直接clone</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com...</span><br></pre></td></tr></table></figure>
+<p> 2) 如果有本地文件则可以在文件所在文件夹中执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>创建本地库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com...</span><br></pre></td></tr></table></figure>
+<p>关联远程库<br>添加一个文件<br>–<br>需要新增或修改一个文件时需要执行两部操作：add和commit<br>add:将工作区添加一个新建或修改的文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>添加特定的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add --all</span><br><span class="line">git add -A</span><br></pre></td></tr></table></figure>
+<p>添加所有的文件<br>commit:将暂存区的文件提交到版本库中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;提交说明&quot;</span><br></pre></td></tr></table></figure>
+<p>当然也可以把两部操作合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -am &quot;提交说明&quot;</span><br></pre></td></tr></table></figure>
+<p>但是这个只适用于添加文件修改，对于新增的文件并不能添加。<br>关于.gitignore的使用<br>–<br>.gitignore其实就是一个git的忽略文件。<br>一般的匹配规则有三种：</p>
 <ol>
 <li>/filename/ 忽略目标文件夹</li>
 <li>*.class 忽略所有匹配的.class文件</li>
 <li>Test.class 忽略精确匹配的Test.class文件</li>
 </ol>
-<p>当在.gitignore中声明了忽略文件后在git add –all中就会被跳过，也无法通过 git add 添加，但是可以使用 git add -f 强制添加。<br>值得注意的是当一个文件已经被添加了，在暂存区中存在时，即使在.gitignore中声明了忽略也对这个文件无效。解决的方法是使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -- &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
-<p>在暂存区中移除该文件。</p>
-<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>对于工作区和暂存区简单的来说就是在add之前所有的变动操作都是在工作区，当add对文件生效后他就在暂存区了，commit提交的内容都只是暂存区的变更内容。<br>关于工作区、暂存区和版本库之间的操作：</p>
+<p>当在.gitignore中声明了忽略文件后在git add –all中就会被跳过，也无法通过 git add 添加，但是可以使用 git add -f 强制添加。<br>值得注意的是当一个文件已经被添加了，在暂存区中存在时，即使在.gitignore中声明了忽略也对这个文件无效。解决的方法是使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -- &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>在暂存区中移除该文件。<br>工作区和暂存区<br>–<br>对于工作区和暂存区简单的来说就是在add之前所有的变动操作都是在工作区，当add对文件生效后他就在暂存区了，commit提交的内容都只是暂存区的变更内容。<br>关于工作区、暂存区和版本库之间的操作：</p>
 <ul>
 <li>将工作区的更改保存到暂存区</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>将暂存区的更改保存到版本库</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>从暂存区中删除文件而工作区不做更改</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -- &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>将暂存区的全部/指定文件替换工作区的文件</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . / git checkout -- &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . &#x2F; git checkout -- &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>将版本库中全部/指定文件替换暂存区和工作区的文件</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD . / git checkout HEAD &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD . &#x2F; git checkout HEAD &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>将版本库中全部/指定文件替换暂存区的文件而工作区不做更改</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD . / git reset HEAD &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>可以用一张图来直观地展示<br><img src="https://www.sisyphuser.cn/image/%E5%B7%A5%E4%BD%9C%E5%8C%BA_%E6%9A%82%E5%AD%98%E5%8C%BA.png" align="middle"></p>
-<h2 id="一些查看Git状态的命令"><a href="#一些查看Git状态的命令" class="headerlink" title="一些查看Git状态的命令"></a>一些查看Git状态的命令</h2><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD . &#x2F; git reset HEAD &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>可以用一张图来直观地展示<br><img src="https://www.sisyphuser.cn/image/%E5%B7%A5%E4%BD%9C%E5%8C%BA_%E6%9A%82%E5%AD%98%E5%8C%BA.png" align="middle" /><br>一些查看Git状态的命令<br>–</p>
+<ul>
 <li>查看工作区修改的内容</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>查看提交的日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看提交的日志精简</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看每一次的命令及对应改动的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<li>查看提交的日志<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></li>
+<li>查看提交的日志精简<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty&#x3D;oneline</span><br></pre></td></tr></table></figure></li>
+<li>查看每一次的命令及对应改动的版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>参考：<br><a href="http://www.worldhello.net/2010/11/30/2166.html" target="_blank" rel="noopener">Git工作区、暂存区和版本库</a><br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰Git教程</a></p>
@@ -637,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建ssh的公钥和私钥"><span class="nav-number">2.</span> <span class="nav-text">创建ssh的公钥和私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以GitHub为例上传公钥"><span class="nav-number">3.</span> <span class="nav-text">以GitHub为例上传公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置git提交时的个人信息"><span class="nav-number">4.</span> <span class="nav-text">设置git提交时的个人信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联远程库"><span class="nav-number">5.</span> <span class="nav-text">关联远程库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加一个文件"><span class="nav-number">6.</span> <span class="nav-text">添加一个文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-gitignore的使用"><span class="nav-number">7.</span> <span class="nav-text">关于.gitignore的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作区和暂存区"><span class="nav-number">8.</span> <span class="nav-text">工作区和暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些查看Git状态的命令"><span class="nav-number">9.</span> <span class="nav-text">一些查看Git状态的命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建ssh的公钥和私钥"><span class="nav-number">2.</span> <span class="nav-text">创建ssh的公钥和私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联远程库"><span class="nav-number">3.</span> <span class="nav-text">关联远程库</span></a></li></ol></div>
             
 
           </div>

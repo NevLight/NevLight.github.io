@@ -388,27 +388,45 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://www.sisyphuser.com/2018/03/27/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4(%E4%B8%8A)" target="_blank" rel="noopener">Git常用命令（上）</a>中记录了一些添加提交文件的命令，而这篇将介绍一些关于版本回滚和分支管理的命令。</p>
 <a id="more"></a>
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>当发现新提交的版本有问题或者需要查看之前版本时可以使用版本回退功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure></p>
-<p>其中HEAD可以用提交时的版本号代替，可以是当前版本之前和之后的版本。<br>    这是一个危险操作，他会替换掉工作区、暂存区和本地库中的内容，工作区和暂存区的内容将无法找回，本地库中的内容可以通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;版本号&gt;</span><br></pre></td></tr></table></figure></p>
-<p>找回，版本号可以通过 git reflog 来查找。<br>使用 git reset –hard HEAD 回退后，在本地库中指针已经指向了对应的HEAD，需要把他同步到远程库。但是这时发现push到远程库失败， 原因是本地库比远程库的版本低（那是当然，刚才做了版本回退了啊），也不能执行pull，否则之前的操作就白费了。解决的办法是使用强制提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br></pre></td></tr></table></figure></p>
-<p>除了用reset之外还可以使用revert进行回退<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;版本号&gt;</span><br></pre></td></tr></table></figure></p>
+
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>当发现新提交的版本有问题或者需要查看之前版本时可以使用版本回退功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+<p>其中HEAD可以用提交时的版本号代替，可以是当前版本之前和之后的版本。<br>    这是一个危险操作，他会替换掉工作区、暂存区和本地库中的内容，工作区和暂存区的内容将无法找回，本地库中的内容可以通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;版本号&gt;</span><br></pre></td></tr></table></figure>
+<p>找回，版本号可以通过 git reflog 来查找。<br>使用 git reset –hard HEAD 回退后，在本地库中指针已经指向了对应的HEAD，需要把他同步到远程库。但是这时发现push到远程库失败， 原因是本地库比远程库的版本低（那是当然，刚才做了版本回退了啊），也不能执行pull，否则之前的操作就白费了。解决的办法是使用强制提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br></pre></td></tr></table></figure>
+<p>除了用reset之外还可以使用revert进行回退</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;版本号&gt;</span><br></pre></td></tr></table></figure>
 <p>reset与revert的区别在与reset 是把HEAD向后移动了一下，而revert是HEAD继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</p>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>在多人协作的开发中，需要有一个规范的工作流程。关于工作流程可以参考<a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="noopener">Git 工作流程</a>,下面将介绍一些关于工作流程中分支的用法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>创建分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>切换分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>创建并切换分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>删除分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></p>
-<p>查看全部分支，在当前分支前加上*<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>将指定分支合并到当前分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it merge --no-ff -m &quot;提交信息&quot; &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>将指定分支合并到当前分支禁用 fast forward ,用这种方式提交会在当前分支生成一个合并分支的记录，方便之后的问题排查。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &lt;branchName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>并入分支，这个和merge执行后的结果一致，但是实现的原理不同。merge只是合并分支，合并后当前分支的历史不变，只会新增目标分支的新的提交。而rebase则是先找到分支的起点，再将目标分支对应起点之后的各版本提交，然后提交当前分支对应起点的各版本。显然这会改变当前分支的历史，将不属于该分支的版本加入到当前分支中，会增加排查问题的难度。<br>并入过程中可能会多次遇到冲突，可以在解决冲突后使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure></p>
-<p>依次解决。<br>rebase 需要遵循原则，即绝不要在公共的分支上使用它。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure></p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>在多人协作的开发中，需要有一个规范的工作流程。关于工作流程可以参考<a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="noopener">Git 工作流程</a>,下面将介绍一些关于工作流程中分支的用法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<p>创建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<p>切换分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<p>创建并切换分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>查看全部分支，在当前分支前加上*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<p>将指定分支合并到当前分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">it merge --no-ff -m &quot;提交信息&quot; &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<p>将指定分支合并到当前分支禁用 fast forward ,用这种方式提交会在当前分支生成一个合并分支的记录，方便之后的问题排查。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<p>并入分支，这个和merge执行后的结果一致，但是实现的原理不同。merge只是合并分支，合并后当前分支的历史不变，只会新增目标分支的新的提交。而rebase则是先找到分支的起点，再将目标分支对应起点之后的各版本提交，然后提交当前分支对应起点的各版本。显然这会改变当前分支的历史，将不属于该分支的版本加入到当前分支中，会增加排查问题的难度。<br>并入过程中可能会多次遇到冲突，可以在解决冲突后使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure>
+<p>依次解决。<br>rebase 需要遵循原则，即绝不要在公共的分支上使用它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --pretty&#x3D;oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
 <p>查看分支合并情况    </p>
 <h2 id="blame"><a href="#blame" class="headerlink" title="blame"></a>blame</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame &lt;fileName&gt;</span><br></pre></td></tr></table></figure>
 <p>用来查询该文件的修改记录</p>
-<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>在每次发布版本或者新增重大功能时可以打上标签以方便以后的查询。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>创建标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagName&gt;</span><br></pre></td></tr></table></figure></p>
-<p>删除标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;tagName&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>在每次发布版本或者新增重大功能时可以打上标签以方便以后的查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagName&gt;</span><br></pre></td></tr></table></figure>
+<p>创建标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagName&gt;</span><br></pre></td></tr></table></figure>
+<p>删除标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;tagName&gt;</span><br></pre></td></tr></table></figure>
 <p>将标签推送到远程库</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰Git教程</a><br><a href="https://my.oschina.net/fadoudou/blog/1480166" target="_blank" rel="noopener">远程仓库版本回退方法</a><br><a href="http://www.ruanyifeng.com/blog/2012/07/git.html" target="_blank" rel="noopener">Git分支管理策略</a><br><a href="https://github.com/geeeeeeeeek/git-recipes/wiki/5.1-%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%EF%BC%9AMerge%E3%80%81Rebase-%E7%9A%84%E9%80%89%E6%8B%A9" target="_blank" rel="noopener">代码合并：Merge、Rebase 的选择</a></p>
 

@@ -387,8 +387,14 @@
       
 
       
-        <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="方法区、元空间"><a href="#方法区、元空间" class="headerlink" title="方法区、元空间"></a>方法区、元空间</h3><p>各个线程共享的内存区域，用于储蓄已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。<br>方法区有时也被称为永久代。在 JDK1.8 及之后取消了永久代，取而代之的是元空间。在永久代中做调优是十分困难的，且效果不明显。永久代的空间大小受制于 JVM 本身内存限制，而元空间是直接使用机器的内存，只受系统内存限制。元空间默认最大大小为无限制。<br><a id="more"></a><br>一些参数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-XX:PermSize=N <span class="comment">//方法区初始大小</span></span><br><span class="line">-XX:MaxPermSize=N <span class="comment">//方法区的最大大小</span></span><br><span class="line"></span><br><span class="line">-XX:MetaspaceSize=N <span class="comment">//元空间的初始大小</span></span><br><span class="line">-XX:MaxMetaspaceSize=N <span class="comment">//原空间的最大大小</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>堆是 Java 虚拟机所管理的内存中最大的一块，是所有线程所共享的，此内存区域的唯一目的就是存放对象实例。堆是垃圾收集器管理的主要区域。在 HotSpot 中，大多数情况下内存被分为新生代和老年代，默认分配比例为 1:2。在新生代中又被分为一个 Eden 和两个 Survivor ，分配比例为 8:1:1。新生代中对象的年龄在经历一次 Minor GC 后年龄会+1，当年龄达到15（默认值）后会进入老年代。<br>一些参数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-XX:InitialHeapSize=N <span class="comment">//堆初始大小</span></span><br><span class="line">-Xms1024m <span class="comment">//简写值</span></span><br><span class="line">-XX:MaxHeapSize=N <span class="comment">//堆的最大值</span></span><br><span class="line">-Xmx1024m <span class="comment">//简写值</span></span><br><span class="line"></span><br><span class="line">-XX:MaxTenuringThreshold=<span class="number">15</span> <span class="comment">//新生代进入老年代的年龄</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="方法区、元空间"><a href="#方法区、元空间" class="headerlink" title="方法区、元空间"></a>方法区、元空间</h3><p>各个线程共享的内存区域，用于储蓄已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。<br>方法区有时也被称为永久代。在 JDK1.8 及之后取消了永久代，取而代之的是元空间。在永久代中做调优是十分困难的，且效果不明显。永久代的空间大小受制于 JVM 本身内存限制，而元空间是直接使用机器的内存，只受系统内存限制。元空间默认最大大小为无限制。</p>
+<a id="more"></a>
+<p>一些参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-XX:PermSize=N <span class="comment">//方法区初始大小</span></span><br><span class="line">-XX:MaxPermSize=N <span class="comment">//方法区的最大大小</span></span><br><span class="line"></span><br><span class="line">-XX:MetaspaceSize=N <span class="comment">//元空间的初始大小</span></span><br><span class="line">-XX:MaxMetaspaceSize=N <span class="comment">//原空间的最大大小</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>堆是 Java 虚拟机所管理的内存中最大的一块，是所有线程所共享的，此内存区域的唯一目的就是存放对象实例。堆是垃圾收集器管理的主要区域。在 HotSpot 中，大多数情况下内存被分为新生代和老年代，默认分配比例为 1:2。在新生代中又被分为一个 Eden 和两个 Survivor ，分配比例为 8:1:1。新生代中对象的年龄在经历一次 Minor GC 后年龄会+1，当年龄达到15（默认值）后会进入老年代。<br>一些参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-XX:InitialHeapSize=N <span class="comment">//堆初始大小</span></span><br><span class="line">-Xms1024m <span class="comment">//简写值</span></span><br><span class="line">-XX:MaxHeapSize=N <span class="comment">//堆的最大值</span></span><br><span class="line">-Xmx1024m <span class="comment">//简写值</span></span><br><span class="line"></span><br><span class="line">-XX:MaxTenuringThreshold=<span class="number">15</span> <span class="comment">//新生代进入老年代的年龄</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="栈区"><a href="#栈区" class="headerlink" title="栈区"></a>栈区</h3><p>线程私有，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。包含程序计数器、虚拟机栈和本地方法栈。</p>
 <h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><p><strong>哪些对象需要回收？</strong></p>
 <ol>
@@ -426,8 +432,7 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>jps</td>
 <td>显示系统内所有虚拟机进程</td>
 </tr>
@@ -451,8 +456,7 @@
 <td>jstack</td>
 <td>显示虚拟机线程快照</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
       
     </div>

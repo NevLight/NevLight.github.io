@@ -387,7 +387,9 @@
       
 
       
-        <p>记录一些常用的 HTML 标签<br><a id="more"></a></p>
+        <p>记录一些常用的 HTML 标签</p>
+<a id="more"></a>
+
 <ul>
 <li><p><code>&lt;title&gt; 在 &lt;head&gt; 中，标题栏文字</code></p>
 </li>
@@ -417,9 +419,21 @@
 </li>
 </ul>
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">		无序列表，有黑点，没有序号</span><br><span class="line">	<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">		有序列表，前面有序号</span><br><span class="line">	<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--表格以table开始--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--tbody使表格能一块块地显示--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--显示行--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--表头--&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">th</span>&gt;</span>head<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--显示单元格--&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">td</span>&gt;</span>content<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">summary</span>=<span class="string">"摘要，不显示方便搜索引擎查看"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">caption</span>&gt;</span>表格的标题<span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
 <ul>
 <li><p><code>&lt;a href=&quot;跳转的网址&quot; title=&quot;鼠标滑过显示&quot;&gt;页面显示&lt;/a&gt;</code></p>
 </li>
@@ -431,18 +445,24 @@
 </li>
 <li><p><code>&lt;form method=&quot;get/post&quot; action=&quot;请求地址&quot;&gt;&lt;/form&gt;</code></p>
 </li>
-<li><p><code>&lt;input type=&quot;输入类型&quot; name=&quot;上传参数名&quot; value=&quot;默认值&quot;&gt;</code> </p>
+<li><p><code>&lt;input type=&quot;输入类型&quot; name=&quot;上传参数名&quot; value=&quot;默认值&quot;&gt; </code> </p>
 <ul>
 <li>type: text,文本框输入；password,密码输入</li>
 </ul>
 </li>
 <li><p><code>&lt;textarea  rows=&quot;行数&quot; cols=&quot;列数&quot;&gt;文本域&lt;/textarea&gt;</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"in_id"</span>&gt;</span>名称关联<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"in_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--label标签下的字段关联对应id标签，相当于对应标签的内容--&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
 <ul>
 <li><p><code>&lt;input type=&quot;radio/checkbox&quot; value=&quot;选中提交的值&quot; name=&quot;字段名称&quot; checked=&quot;checked&quot;&gt;单选/多选&lt;/input&gt;</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!---multiple代表多选--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>下拉框选择<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
 <ul>

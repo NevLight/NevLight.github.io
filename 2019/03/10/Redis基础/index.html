@@ -395,22 +395,29 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Redis由key-value组成的存储系统，其中value可以是string,hash,list,set,sorted set。</p>
 <a id="more"></a>
+
+
 <p>下载地址: <a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">Windows</a> <a href="https://redis.io/download" target="_blank" rel="noopener">Linux</a></p>
 <h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><p>获取某一个参数 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config get &#123;config_name&#125;</span><br></pre></td></tr></table></figure>
+
 <p>获取全部参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config get *</span><br></pre></td></tr></table></figure>
+
 <p>编辑参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config set &#123;config_name&#125; &#123;config_value&#125;</span><br></pre></td></tr></table></figure>
+
 <p>具体参数含义可以参考<a href="http://www.runoob.com/redis/redis-conf.html" target="_blank" rel="noopener">这里</a></p>
 <h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><ul>
 <li>安装</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum intall redis</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>用命令启动redis</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;redis-server</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>后台启动redis</p>
 <ol>
@@ -421,7 +428,8 @@
 <li><p>关闭redis</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli shutdown</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;redis-cli shutdown</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>允许远程访问Redis服务器<ol>
 <li>修改 /etc/redis.conf 配置文件, bind 0.0.0.0 </li>

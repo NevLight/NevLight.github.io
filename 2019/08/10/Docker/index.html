@@ -389,7 +389,9 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Docker 是一个开源的应用容器引擎，可以更快地构建和部署新应用程序。Docker 容器将软件及其依赖关系整合到一个标准化的软件开发单元中，包括运行所需的一切：代码，运行时，系统工具和库。这可以保证应用程序始终运行相同，并使协作变得像共享容器映像一样简单。<br><img src="https://i.loli.net/2019/08/11/SuzLnUWgBemYjrf.png" alt="docker"><br><a id="more"></a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Docker 是一个开源的应用容器引擎，可以更快地构建和部署新应用程序。Docker 容器将软件及其依赖关系整合到一个标准化的软件开发单元中，包括运行所需的一切：代码，运行时，系统工具和库。这可以保证应用程序始终运行相同，并使协作变得像共享容器映像一样简单。<br><img src="https://i.loli.net/2019/08/11/SuzLnUWgBemYjrf.png" alt="docker"></p>
+<a id="more"></a>
+
 <h2 id="Docker-的优势"><a href="#Docker-的优势" class="headerlink" title="Docker 的优势"></a>Docker 的优势</h2><p>对于开发人员来说 Docker 的优势主要是下面这几点：</p>
 <ol>
 <li>加载更快，不需要再浪费时间设置开发环境，启动新的实例即可运行代码。</li>
@@ -413,8 +415,7 @@
 <th>命令</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>查看已安装的镜像</td>
 <td><code>docker images</code></td>
 </tr>
@@ -470,8 +471,7 @@
 <td>进入运行中容器</td>
 <td><code>docker exec -it &lt;container&gt; /bin/bash</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>一些 run 常用命令</strong></p>
 <table>
 <thead>
@@ -480,8 +480,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>-d</td>
 <td>容器后台运行，并返回ID</td>
 </tr>
@@ -529,9 +528,9 @@
 <td>–link [其他容器名]:[在该容器中的别名]</td>
 <td>添加链接到另一个容器</td>
 </tr>
-</tbody>
-</table>
-<h2 id="Dockerfile-的使用"><a href="#Dockerfile-的使用" class="headerlink" title="Dockerfile 的使用"></a>Dockerfile 的使用</h2><p>想要从一个基础镜像开始构建自定义镜像，可以一步步进行构建，也可以写一个配置文件快速构建。这个配置文件就是 Dockerfile。<br>一个简单的 Dockerfile<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">FROM centos:7</span><br><span class="line"></span><br><span class="line">RUN yum install -y wget</span><br><span class="line"></span><br><span class="line">RUN cd /</span><br><span class="line"></span><br><span class="line">ADD jdk-8u152-linux-x64.tar.gz /</span><br><span class="line"></span><br><span class="line">RUN wget http://apache.stu.edu.tw/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz</span><br><span class="line">RUN tar zxvf apache-tomcat-7.0.82.tar.gz</span><br><span class="line"></span><br><span class="line">ENV JAVA_HOME=/jdk1.8.0_152</span><br><span class="line">ENV PATH=$PATH:/jdk1.8.0_152/bin</span><br><span class="line">CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]</span><br></pre></td></tr></table></figure></p>
+</tbody></table>
+<h2 id="Dockerfile-的使用"><a href="#Dockerfile-的使用" class="headerlink" title="Dockerfile 的使用"></a>Dockerfile 的使用</h2><p>想要从一个基础镜像开始构建自定义镜像，可以一步步进行构建，也可以写一个配置文件快速构建。这个配置文件就是 Dockerfile。<br>一个简单的 Dockerfile</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">FROM centos:7</span><br><span class="line"></span><br><span class="line">RUN yum install -y wget</span><br><span class="line"></span><br><span class="line">RUN cd /</span><br><span class="line"></span><br><span class="line">ADD jdk-8u152-linux-x64.tar.gz /</span><br><span class="line"></span><br><span class="line">RUN wget http://apache.stu.edu.tw/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz</span><br><span class="line">RUN tar zxvf apache-tomcat-7.0.82.tar.gz</span><br><span class="line"></span><br><span class="line">ENV JAVA_HOME=/jdk1.8.0_152</span><br><span class="line">ENV PATH=$PATH:/jdk1.8.0_152/bin</span><br><span class="line">CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]</span><br></pre></td></tr></table></figure>
 <p>各个参数说明</p>
 <ol>
 <li>FROM<br> <code>FROM &lt;image&gt;:&lt;tag&gt;</code><br> 第一条必须为 <code>FROM</code> 指令，表示引用自哪个镜像</li>

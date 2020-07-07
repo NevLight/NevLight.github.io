@@ -389,16 +389,17 @@
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。接下来我会简单介绍一下https的通讯过程。</p>
 <a id="more"></a>
+
 <hr>
 <h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>http默认使用80端口<br>https默认使用443端口<br>HTTPS 协议主要是为了保护用户隐私，防止流量劫持。<br>https其实就是一个添加了加密认证的http，应用到了非对称加密和对称加密。<br>关于非对称加密和对称加密的区别可以参考<a href="https://blog.csdn.net/shenggaofei/article/details/52333687" target="_blank" rel="noopener">这个</a>。</p>
-<h3 id="握手过程"><a href="#握手过程" class="headerlink" title="握手过程"></a>握手过程</h3><p>整个握手的过程可由下图表示<br><img src="https://www.sisyphuser.cn/image/https.jpg" style="text-align: center; "></p>
+<h3 id="握手过程"><a href="#握手过程" class="headerlink" title="握手过程"></a>握手过程</h3><p>整个握手的过程可由下图表示<br><img src="https://www.sisyphuser.cn/image/https.jpg" style="text-align: center; "></img></p>
 <h3 id="每个步骤传递的数据"><a href="#每个步骤传递的数据" class="headerlink" title="每个步骤传递的数据"></a>每个步骤传递的数据</h3><pre><code>1.客户端发起请求，传输随机数、加密套件、支持的TLS协议版本等
 2.服务端返回，随机数、选择一个支持的协议版本、加密证书
 3.与CA验证证书有效性
 4.客户端请求，生成随机数结合前两个随机数和约定的算法生成密钥，使用证书中的公钥加密传输生成的随机数
 5.服务端，使用私钥获取加密传输中的随机数，用三个随机数和约定好的算法生成密钥，使用密钥用对称加密与客户端通讯验证
-6.握手结束，使用密钥进行http加密通讯
-</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://developer.baidu.com/resources/online/doc/security/https-pratice-1.html" target="_blank" rel="noopener">大型网站的 HTTPS 实践（一）– HTTPS 协议和原理</a><br><a href="https://blog.csdn.net/hherima/article/details/52469674" target="_blank" rel="noopener">HTTPS协议详解(四)：TLS/SSL握手过程</a></p>
+6.握手结束，使用密钥进行http加密通讯</code></pre>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://developer.baidu.com/resources/online/doc/security/https-pratice-1.html" target="_blank" rel="noopener">大型网站的 HTTPS 实践（一）– HTTPS 协议和原理</a><br><a href="https://blog.csdn.net/hherima/article/details/52469674" target="_blank" rel="noopener">HTTPS协议详解(四)：TLS/SSL握手过程</a></p>
 
       
     </div>

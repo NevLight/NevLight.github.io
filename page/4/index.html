@@ -387,7 +387,7 @@
       
         
           <h2 id="为什么要用RxJava"><a href="#为什么要用RxJava" class="headerlink" title="为什么要用RxJava"></a>为什么要用RxJava</h2><p>最近发现越来越多的项目开始使用RxJava，那么他到底有什么优势呢。总结来说有两点：<br>1.代码简洁、逻辑清晰，避免了处理复杂逻辑时的大量代码嵌套<br>2.线程自由控制，能够多次自由地切换线程，满足复杂异步操作的需求</p>
-<h2 id="RxJava的使用"><a href="#RxJava的使用" class="headerlink" title="RxJava的使用"></a>RxJava的使用</h2><h4 id="RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来"><a href="#RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来" class="headerlink" title="RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来"></a>RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来</h4><h3 id="要使用RxJava首先引入两个依赖"><a href="#要使用RxJava首先引入两个依赖" class="headerlink" title="要使用RxJava首先引入两个依赖"></a>要使用RxJava首先引入两个依赖</h3><p>compile ‘io.reactivex:rxandroid:1.2.1’<br>compile ‘io.reactivex:rxjava:1.1.6’<br>接下来贴出几个小例子来简单演示RxJava的使用<br>
+<h2 id="RxJava的使用"><a href="#RxJava的使用" class="headerlink" title="RxJava的使用"></a>RxJava的使用</h2><h4 id="RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来"><a href="#RxJava的主要组成是两个核心类Observables-被观察者、事件源-，Subscribers-观察者-实现完核心类后用subscribe-将两着订阅起来" class="headerlink" title="RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来"></a>RxJava的主要组成是两个核心类Observables(被观察者、事件源)，Subscribers(观察者),实现完核心类后用subscribe()将两着订阅起来</h4><h3 id="要使用RxJava首先引入两个依赖"><a href="#要使用RxJava首先引入两个依赖" class="headerlink" title="要使用RxJava首先引入两个依赖"></a>要使用RxJava首先引入两个依赖</h3><p>compile ‘io.reactivex:rxandroid:1.2.1’<br>compile ‘io.reactivex:rxjava:1.1.6’<br>接下来贴出几个小例子来简单演示RxJava的使用</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/09/09/RxJava%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/#more" rel="contents">
@@ -533,7 +533,7 @@
 
       
         
-          <h2 id="1-windowSoftInputMode设置"><a href="#1-windowSoftInputMode设置" class="headerlink" title="1.windowSoftInputMode设置"></a>1.windowSoftInputMode设置</h2><p>windowSoftInputMode的参数分为两种<br> <strong>限定进入Activity时键盘的状态(弹出还是隐藏)</strong><br>    stateUnspecified：未指定的默认状态<br>    stateUnchanged    ：不改变键盘的状态——与上一个界面的键盘状态相同<br>    stateHidden    ：隐藏键盘<br>    stateAlwaysHidden：隐藏键盘——进入下一个界面后返回还是隐藏键盘<br>    stateVisible    ：显示键盘<br>    stateAlwaysVisible：显示键盘——进入下一个界面后返回还是显示键盘<br> <strong>设置键盘弹出时页面布局的改变的状态</strong><br>    adjustUnspecified：未指定的默认状态，自动适配屏幕<br>    adjustResize    ：Activity的主窗口总是会被调整大小，从而保证软键盘显示空间，键盘作为布局的一部分来展示<br>    adjustPan    ：利用布局移动来保证输入框在视野范围内<br>
+          <h2 id="1-windowSoftInputMode设置"><a href="#1-windowSoftInputMode设置" class="headerlink" title="1.windowSoftInputMode设置"></a>1.windowSoftInputMode设置</h2><p>windowSoftInputMode的参数分为两种<br> <strong>限定进入Activity时键盘的状态(弹出还是隐藏)</strong><br>    stateUnspecified：未指定的默认状态<br>    stateUnchanged    ：不改变键盘的状态——与上一个界面的键盘状态相同<br>    stateHidden    ：隐藏键盘<br>    stateAlwaysHidden：隐藏键盘——进入下一个界面后返回还是隐藏键盘<br>    stateVisible    ：显示键盘<br>    stateAlwaysVisible：显示键盘——进入下一个界面后返回还是显示键盘<br> <strong>设置键盘弹出时页面布局的改变的状态</strong><br>    adjustUnspecified：未指定的默认状态，自动适配屏幕<br>    adjustResize    ：Activity的主窗口总是会被调整大小，从而保证软键盘显示空间，键盘作为布局的一部分来展示<br>    adjustPan    ：利用布局移动来保证输入框在视野范围内</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/09/09/%E5%85%B3%E4%BA%8E%E9%94%AE%E7%9B%98%E7%9A%84%E4%B8%80%E5%88%87/#more" rel="contents">

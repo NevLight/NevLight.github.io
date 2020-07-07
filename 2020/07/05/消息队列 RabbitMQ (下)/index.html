@@ -400,10 +400,13 @@
       
         <h2 id="四种交换机类型"><a href="#四种交换机类型" class="headerlink" title="四种交换机类型"></a>四种交换机类型</h2><p>RabbitMQ 根据路由方式的不同，有四种交换机类型直连交换机、扇形交换机、主题交换机和首部交换机。</p>
 <a id="more"></a>
+
 <h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><ul>
 <li><strong>交换机（Exchange）</strong><br>  用于接收生产者发布的消息，根据 Exchange 的类型和消息类型不同转发给对应的 Queue 。</li>
 <li><strong>消息队列（Queue）</strong><br>  用于接收和储存消息，消费者也从对应的队列中获取消息。</li>
-<li><strong>路由键（RoutingKey）</strong><br>  用于 Exchange 和 Queue 之间的绑定，Exchange 根据路由键决定将消息转发到哪几个 Queue。<div align="center"><br>  <img src="https://www.sisyphuser.cn/pic/rabbitmq_spring_01.png"><br></div>
+<li><strong>路由键（RoutingKey）</strong><br>  用于 Exchange 和 Queue 之间的绑定，Exchange 根据路由键决定将消息转发到哪几个 Queue。<div align="center">
+  <img src="https://www.sisyphuser.cn/pic/rabbitmq_spring_01.png"></img>
+</div>
 
 </li>
 </ul>
@@ -411,12 +414,14 @@
 <h3 id="扇形交换机（Fanout-Exchange）"><a href="#扇形交换机（Fanout-Exchange）" class="headerlink" title="扇形交换机（Fanout Exchange）"></a>扇形交换机（Fanout Exchange）</h3><p>扇形交换机会将路由键忽略，将接收到的消息转发到了所有队列上。</p>
 <h3 id="主题交换机（Topic-Exchange）"><a href="#主题交换机（Topic-Exchange）" class="headerlink" title="主题交换机（Topic Exchange）"></a>主题交换机（Topic Exchange）</h3><p>主题交换机将接收的消息转发到匹配的队列上，可使用 <code>#*</code> 做多个和单个字符的匹配。</p>
 <h3 id="首部交换机（Headers-Exchange）"><a href="#首部交换机（Headers-Exchange）" class="headerlink" title="首部交换机（Headers Exchange）"></a>首部交换机（Headers Exchange）</h3><p>无路由键概念，以 header 和 message 中的消息匹配为准。</p>
-<h2 id="六种模式"><a href="#六种模式" class="headerlink" title="六种模式"></a>六种模式</h2><h3 id="默认模式（单发送、单接收）"><a href="#默认模式（单发送、单接收）" class="headerlink" title="默认模式（单发送、单接收）"></a>默认模式（单发送、单接收）</h3><div align="center"><br>    <img src="https://www.sisyphuser.cn/pic/rabbitmq_02.png"><br></div>
+<h2 id="六种模式"><a href="#六种模式" class="headerlink" title="六种模式"></a>六种模式</h2><h3 id="默认模式（单发送、单接收）"><a href="#默认模式（单发送、单接收）" class="headerlink" title="默认模式（单发送、单接收）"></a>默认模式（单发送、单接收）</h3><div align="center">
+    <img src="https://www.sisyphuser.cn/pic/rabbitmq_02.png"></img>
+</div>
 
 <p>这个一个最简单的发送消息的模式，生产者通过一个默认的交换机（Direct Exchange）将消息转发到对应的消息队列，消费者从消息队列接收消息。</p>
 <ul>
 <li><p>配置信息</p>
-  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">rabbitmq:</span></span><br><span class="line"><span class="attr">    host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">    port:</span> <span class="number">5672</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">admin</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">admin</span></span><br><span class="line"><span class="attr">    virtual-host:</span> <span class="string">/</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">rabbitmq:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">admin</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">admin</span></span><br><span class="line">    <span class="attr">virtual-host:</span> <span class="string">/</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>新建一个消息队列（没有绑定的消息队列默认与 (AMQP default) 交换机绑定，路由键为消息队列的名称）</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RabbitMQConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">queueBuild2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">"test_queue"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -426,9 +431,13 @@
 </li>
 <li><p>接收消息</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener</span>(queues = <span class="string">"test_queue"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">queueTest</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Receiver"</span> + message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
-<h3 id="work-模式"><a href="#work-模式" class="headerlink" title="work 模式"></a>work 模式</h3><div align="center"><br>    <img src="https://www.sisyphuser.cn/pic/rabbitmq_03.png"><br></div>
+<h3 id="work-模式"><a href="#work-模式" class="headerlink" title="work 模式"></a>work 模式</h3><div align="center">
+    <img src="https://www.sisyphuser.cn/pic/rabbitmq_03.png"></img>
+</div>
 
 <p>主要应用于避免立即执行资源密集型任务，可以安排任务在稍后完成。work 模式的相关设置与默认模式相似。</p>
 <ul>
@@ -441,15 +450,20 @@
 <li><p>队列持久化</p>
 <p>  在官方的 work 模式中提到了为了保障消息的不丢失需要对队列和消息都做持久化处理，在 Spring AMQP 中默认所有的队列和消息都是持久化的。下面在 SpringBoot 集成中新建一个持久化队列和一个非持久化队列。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RabbitMQConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 持久化队列，默认第二个参数不填也是true</span></span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"durable"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">queueBuild2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">"blog_queue_durable"</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  非持久化队列</span></span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"undurable"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">queueBuild3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">"blog_queue_undurable"</span>,<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>  在 RabbitMQ 管理页面中非持久化队列没有 <code>D</code> 标示。</p>
-  <div align="center"><br>      <img src="https://www.sisyphuser.cn/pic/rabbitmq_08.png"><br>  </div>
+  <div align="center">
+      <img src="https://www.sisyphuser.cn/pic/rabbitmq_08.png"></img>
+  </div>
 </li>
 <li><p>消息持久化</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> AmqpTemplate template;</span><br><span class="line"><span class="comment">// 默认模式发送的消息即为持久化消息</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sendPersistentMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    template.convertAndSend(<span class="string">""</span>, <span class="string">"blog_queue_durable"</span>, <span class="string">"persistentMessage"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 非持久化消息</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sendNonPersistentMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    org.springframework.amqp.core.MessageProperties messageProperties = <span class="keyword">new</span> org.springframework.amqp.core.MessageProperties();</span><br><span class="line">    messageProperties.setContentType(<span class="string">"text/plain"</span>);</span><br><span class="line">    <span class="comment">// 设置消息类型为非持久化消息</span></span><br><span class="line">    messageProperties.setDeliveryMode(MessageDeliveryMode.NON_PERSISTENT);</span><br><span class="line">    messageProperties.setPriority(<span class="number">0</span>);</span><br><span class="line">    messageProperties.setContentEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">    Message message = <span class="keyword">new</span> Message(<span class="string">"message NON_PERSISTENT"</span>.getBytes(), messageProperties);</span><br><span class="line">    template.send(<span class="string">"blog_queue_durable"</span>,message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  将消息标记为持久化并不能完全保证消息不会丢失，如果需要得到完全可靠保证，可以使用发布者确认模式。<a href="https://www.rabbitmq.com/confirms.html" target="_blank" rel="noopener">https://www.rabbitmq.com/confirms.html</a></p>
 </li>
 </ul>
-<h3 id="Publish-Subscribe-模式"><a href="#Publish-Subscribe-模式" class="headerlink" title="Publish/Subscribe 模式"></a>Publish/Subscribe 模式</h3><div align="center"><br>    <img src="https://www.sisyphuser.cn/pic/rabbitmq_04.png"><br></div>
+<h3 id="Publish-Subscribe-模式"><a href="#Publish-Subscribe-模式" class="headerlink" title="Publish/Subscribe 模式"></a>Publish/Subscribe 模式</h3><div align="center">
+    <img src="https://www.sisyphuser.cn/pic/rabbitmq_04.png">
+</div>
 
 <p>由上图可知该模式是由 Exchange 传给所有的队列，即为扇形交换机（Fanout Exchange）。</p>
 <ul>
@@ -461,11 +475,17 @@
 </li>
 <li><p>接收消息</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener</span>(queues = <span class="string">"#&#123;autoDeleteQueue1.name&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fanoutQueue01</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"queue01:"</span> + message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
-<h3 id="routing模式"><a href="#routing模式" class="headerlink" title="routing模式"></a>routing模式</h3><div align="center"><br>    <img src="https://www.sisyphuser.cn/pic/rabbitmq_05.png"><br></div>
+<h3 id="routing模式"><a href="#routing模式" class="headerlink" title="routing模式"></a>routing模式</h3><div align="center">
+    <img src="https://www.sisyphuser.cn/pic/rabbitmq_05.png">
+</div>
 
-<div align="center"><br>    <img src="https://www.sisyphuser.cn/pic/rabbitmq_09.png"><br></div>
+<div align="center">
+    <img src="https://www.sisyphuser.cn/pic/rabbitmq_09.png">
+</div>
 
 <p>该模式即使用 Direct Exchange，将每个队列都通过路由键绑定到交换机上，以实现精准推送。同一个路由键可以被使用多次，一个队列也可以被多个路由键绑定。</p>
 <ul>
@@ -474,17 +494,23 @@
 </li>
 <li><p>发送消息</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> AmqpTemplate template;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">routingTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    template.convertAndSend(<span class="string">"blog_direct"</span>,<span class="string">"black"</span>, <span class="string">"routing key: black"</span>);</span><br><span class="line">    template.convertAndSend(<span class="string">"blog_direct"</span>,<span class="string">"green"</span>, <span class="string">"routing key: green"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h3 id="topic模式"><a href="#topic模式" class="headerlink" title="topic模式"></a>topic模式</h3><div align="center"><br>    <img src="https://www.sisyphuser.cn/pic/rabbitmq_06.png"><br></div>
+<h3 id="topic模式"><a href="#topic模式" class="headerlink" title="topic模式"></a>topic模式</h3><div align="center">
+    <img src="https://www.sisyphuser.cn/pic/rabbitmq_06.png">
+</div>
 
 <p>主题模式即使用了主题交换机，他的 RoutingKey 使用了多个单词用 <code>.</code> 分割。使用带 <code>*</code> 和 <code>#</code> 的 Key 绑定交换机和队列（<code>*</code>匹配单个单词，<code>#</code>匹配零个或多个单词）。在发送消息时需要使用完整的单词组，交换机根据对应的匹配关系转发到相应队列。</p>
 <ul>
 <li><p>创建交换机和队列</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RabbitMQConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TopicExchange <span class="title">topic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> TopicExchange(<span class="string">"blog_topic"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">autoDeleteQueue1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AnonymousQueue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">autoDeleteQueue2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AnonymousQueue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Binding <span class="title">binding1</span><span class="params">(TopicExchange topic, Queue autoDeleteQueue1)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(autoDeleteQueue1).to(topic).with(<span class="string">"*.orange.*"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Binding <span class="title">binding2</span><span class="params">(TopicExchange topic, Queue autoDeleteQueue2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(autoDeleteQueue2).to(topic).with(<span class="string">"*.*.rabbit"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Binding <span class="title">binding3</span><span class="params">(TopicExchange topic, Queue autoDeleteQueue2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(autoDeleteQueue2).to(topic).with(<span class="string">"lazy.#"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h3 id="RPC模式"><a href="#RPC模式" class="headerlink" title="RPC模式"></a>RPC模式</h3><div align="center"><br>    <img src="https://www.sisyphuser.cn/pic/rabbitmq_07.png"><br></div>
+<h3 id="RPC模式"><a href="#RPC模式" class="headerlink" title="RPC模式"></a>RPC模式</h3><div align="center">
+    <img src="https://www.sisyphuser.cn/pic/rabbitmq_07.png">
+</div>
 
 <p>如果需要在远程上计算并等待结果返回，这种模式称为远程调用或 <code>RPC</code>。在此模式用使用的是 Direct 交换机。</p>
 <ul>
@@ -493,6 +519,7 @@
 </li>
 <li><p>发送接收消息</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 接收消息</span></span><br><span class="line"><span class="meta">@RabbitListener</span>(queues = <span class="string">"#&#123;autoDeleteQueue1.name&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fanoutQueue01</span><span class="params">(<span class="keyword">int</span> message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"queue01:"</span> + message);</span><br><span class="line">        <span class="keyword">return</span> message + <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AmqpAdmin amqpAdmin;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送消息</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rpcTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = (<span class="keyword">int</span>)template.convertSendAndReceive(<span class="string">"rpc_direct"</span>, <span class="string">"rpc"</span>, <span class="number">91</span>);</span><br><span class="line">        println(result);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/wuhenzhidu/p/10801103.html" target="_blank" rel="noopener">RabbitMQ指南之四</a><br><a href="https://www.jianshu.com/p/469f4608ce5d" target="_blank" rel="noopener">RabbitMQ的四种交换机</a><br><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-spring-application" target="_blank" rel="noopener">Spring Boot Features</a><br><a href="https://www.rabbitmq.com/getstarted.html" target="_blank" rel="noopener">RabbitMQ</a><br><a href="https://docs.spring.io/spring-amqp/reference/#async-consumer" target="_blank" rel="noopener">Spring-AMQP</a><br></p>
