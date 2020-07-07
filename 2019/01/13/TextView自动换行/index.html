@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="基础," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言TextView可以说是在Android中最常用的控件之一了。但是Text View中也有很多的坑，其中之一就是自动换行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TextView自动换行">
+<meta property="og:url" content="http://yoursite.com/2019/01/13/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C/index.html">
+<meta property="og:site_name" content="SISYPHUSER">
+<meta property="og:description" content="前言TextView可以说是在Android中最常用的控件之一了。但是Text View中也有很多的坑，其中之一就是自动换行。">
+<meta property="og:image" content="https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_1.jpg">
+<meta property="og:image" content="https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_2.jpg">
+<meta property="og:image" content="https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_3.jpg">
+<meta property="article:published_time" content="2019-01-13T07:34:40.000Z">
+<meta property="article:modified_time" content="2019-08-11T06:44:42.682Z">
+<meta property="article:author" content="Andy">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/13/TextView自动换行/"/>
+
+
+
+
+
+  <title>TextView自动换行 | SISYPHUSER</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SISYPHUSER</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-word">
+          <a href="/word/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            word
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SISYPHUSER">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TextView自动换行</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T15:34:40+08:00">
+                2019-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>TextView可以说是在Android中最常用的控件之一了。但是Text View中也有很多的坑，其中之一就是自动换行。</p>
+<a id="more"></a>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><img align="middle" width="350px" src="https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_1.jpg"><br><br>上面是网易新闻的列表截图，可以看到，“韩媒：中国已经抄袭了我们34个综”后面就进行换行了，给后面留下了较多的空白。像这种图片较多，每行之间间隔较大的列表来说也不是很明显。<br>但像下面这种就显得比较难看了。<br><img align="middle" width="350px" src="https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_2.jpg"><br></p>
+<h3 id="初步解决方案"><a href="#初步解决方案" class="headerlink" title="初步解决方案"></a>初步解决方案</h3><p>想到的思路是自己重写TextView的onDraw方法，只有到文字超出控件宽度时才换行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class AlignText extends TextView &#123;</span><br><span class="line"></span><br><span class="line">    private float textSize;</span><br><span class="line">    private int textColor;</span><br><span class="line">    private int paddingRight;</span><br><span class="line">    private int paddingLeft;</span><br><span class="line">    private float lineSpacing;</span><br><span class="line">    private Paint paint;</span><br><span class="line"></span><br><span class="line">    public AlignText(Context context, @Nullable AttributeSet attrs) &#123;</span><br><span class="line">        super(context, attrs);</span><br><span class="line">        textSize = getTextSize();</span><br><span class="line">        textColor = getCurrentTextColor();</span><br><span class="line">        paddingLeft = getPaddingLeft();</span><br><span class="line">        paddingRight = getPaddingRight();</span><br><span class="line">        lineSpacing = getLineSpacingExtra();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">        if (paint == null) &#123;</span><br><span class="line">            paint = getPaint();</span><br><span class="line">            paint.setAntiAlias(true);</span><br><span class="line">            paint.setColor(textColor);</span><br><span class="line">        &#125;</span><br><span class="line">        int textShowWidth = getWidth() - paddingRight - paddingLeft;</span><br><span class="line">        int lineCount = 1;</span><br><span class="line">        String sContent = this.getText().toString();</span><br><span class="line">        char[] textCharArray = sContent.toCharArray();</span><br><span class="line">        float drawWidth = 0;</span><br><span class="line">        float charWidth = 0;</span><br><span class="line">        for (int i = 0; i &lt; textCharArray.length; i++) &#123;</span><br><span class="line">            if (textCharArray[i] == &apos;\n&apos;) &#123;</span><br><span class="line">                lineCount++;</span><br><span class="line">                drawWidth = 0;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            charWidth = paint.measureText(textCharArray, i, 1);</span><br><span class="line">            if (textShowWidth - drawWidth &lt; charWidth) &#123;</span><br><span class="line">                lineCount++;</span><br><span class="line">                drawWidth = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            float x=drawWidth + paddingLeft;</span><br><span class="line">            float y = (lineCount) * textSize + ((lineSpacing + textSize/8)* (lineCount - 1));</span><br><span class="line">            canvas.drawText(textCharArray, i, 1, x, y, paint);</span><br><span class="line">            drawWidth += charWidth;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="存在的不足"><a href="#存在的不足" class="headerlink" title="存在的不足"></a>存在的不足</h3><p>由上节代码可以看到，AlignText是在计算每一个字符的长度后判断是否需要换行。但是当一段文字中出现中英文或者标点符号时，由于不同的字符之间的宽度不同，在一段文字右侧也不能够完全对齐。</p>
+<p><img align="middle" src="https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_3.jpg"><br></p>
+<h3 id="思考完善"><a href="#思考完善" class="headerlink" title="思考完善"></a>思考完善</h3><p>要解决上面提到的问题，我想到了两种方法：</p>
+<ol>
+<li>由于单个汉字所占用空间是最大的，所以将所有的单个字符的宽度都设置为统一的宽度。</li>
+<li>将最后的空白分配到之前的每一个字符的间隔之间。</li>
+</ol>
+<p>方案一：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">protected void onDraw(Canvas canvas)&#123;</span><br><span class="line">    if (paint == null) &#123;</span><br><span class="line">        paint = getPaint();</span><br><span class="line">        paint.setAntiAlias(true);</span><br><span class="line">        paint.setColor(textColor);</span><br><span class="line">    &#125;</span><br><span class="line">    int textShowWidth = getWidth() - paddingRight - paddingLeft;</span><br><span class="line">    int lineCount = 1;</span><br><span class="line">    String sContent = this.getText().toString();</span><br><span class="line">    char[] textCharArray = sContent.toCharArray();</span><br><span class="line">    float drawWidth = 0;</span><br><span class="line">    float charWidth = paint.measureText(&quot;啊&quot;);</span><br><span class="line">    for (int i = 0; i &lt; textCharArray.length; i++) &#123;</span><br><span class="line">        if (textCharArray[i] == &apos;\n&apos;) &#123;</span><br><span class="line">            lineCount++;</span><br><span class="line">            drawWidth = 0;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if (textShowWidth - drawWidth &lt; charWidth) &#123;</span><br><span class="line">            lineCount++;</span><br><span class="line">            drawWidth = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        float x=drawWidth + paddingLeft;</span><br><span class="line">        float y = (lineCount) * textSize + ((lineSpacing + textSize/8)* (lineCount - 1));</span><br><span class="line">        canvas.drawText(textCharArray, i, 1, x, y, paint);</span><br><span class="line">        drawWidth += charWidth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">效果</span><br><span class="line">&lt;img align=&quot;middle&quot; src=&quot;https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_4.jpg&quot;/&gt;&lt;/br&gt;</span><br><span class="line"></span><br><span class="line">方案二：</span><br></pre></td></tr></table></figure></p>
+<p>protected void onDraw(Canvas canvas){<br>    if (paint == null) {<br>        paint = getPaint();<br>        paint.setAntiAlias(true);<br>        paint.setColor(textColor);<br>    }<br>    int textShowWidth = getWidth() - paddingRight - paddingLeft;<br>    int lineCount = 1;<br>    String sContent = this.getText().toString();<br>    char[] textCharArray = sContent.toCharArray();<br>    float drawWidth = 0;<br>    float charWidth = 0;<br>    int start = 0;<br>    int end = 0;<br>    for (int i = 0; i &lt; textCharArray.length; i++) {<br>        end++;<br>        if(i==textCharArray.length-1){<br>            float x = paddingLeft;<br>            float y = (lineCount) <em> textSize + ((lineSpacing + textSize / 8) </em> (lineCount - 1));<br>            canvas.drawText(textCharArray, start, end - start, x, y, paint);<br>        }<br>        if (textCharArray[i] == ‘\n’) {<br>            if (end-1 &gt; start) {<br>                float x = paddingLeft;<br>                float y = (lineCount) <em> textSize + ((lineSpacing + textSize / 8) </em> (lineCount - 1));<br>                canvas.drawText(textCharArray, start, end - start, x, y, paint);<br>            }<br>            lineCount++;<br>            drawWidth = 0;<br>            start=i+1;<br>            continue;<br>        }<br>        charWidth = paint.measureText(textCharArray, i, 1);<br>        if (textShowWidth - drawWidth &lt; charWidth) {<br>            float addSpacing = (textShowWidth - drawWidth)/(end-2-start);<br>            float x = paddingLeft;<br>            float y = (lineCount) <em> textSize + ((lineSpacing + textSize/8)</em> (lineCount - 1));</p>
+<pre><code>        int innerDrawWidth=0;
+        for(int j= 0;j&lt;end-1-start;j++) {
+            canvas.drawText(textCharArray, start+j, 1, x+innerDrawWidth+j*addSpacing, y, paint);
+            float tempCharWidth=paint.measureText(textCharArray, start+j, 1);
+            innerDrawWidth+=tempCharWidth;
+        }
+
+        lineCount++;
+        drawWidth = 0;
+        start=i;
+    }
+    drawWidth += charWidth;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">效果</span><br><span class="line">&lt;img align=&quot;middle&quot; src=&quot;https://www.sisyphuser.cn/images/see/TextView%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C_6.jpg&quot;/&gt;&lt;/br&gt;</span><br><span class="line"></span><br><span class="line">### emoji问题</span><br><span class="line"></span><br><span class="line">在解决完对齐问题后发现了一个bug。原本能显示的emoji表情由于每次分开绘制字符变成了两个乱码符号。</span><br><span class="line">从[Emoji的编码以及常见问题处理](https://segmentfault.com/a/1190000007594620?utm_source=tuicool&amp;utm_medium=referral)中了解到一个emoji占了两个长度，而我把它截断了自然就显示乱码了。&lt;/br&gt;</span><br><span class="line">解决方案：对emoji的两个字符一起绘制，emoji的编码为(&apos;u&apos;\ud83c[\udf00-\udfff] | &apos;u&apos;\ud83d[\udc00-\ude4f\ude80-\udeff] | &apos;u&apos;[\u2600-\u2B55])</span><br></pre></td></tr></table></figure></p>
+<p>protected void onDraw(Canvas canvas){<br>    if (paint == null) {<br>        paint = getPaint();<br>        paint.setAntiAlias(true);<br>        paint.setColor(textColor);<br>    }<br>    int textShowWidth = getWidth() - paddingRight - paddingLeft;<br>    int lineCount = 1;<br>    String sContent = this.getText().toString();<br>    char[] textCharArray = sContent.toCharArray();<br>    float drawWidth = 0;<br>    float charWidth = 0;<br>    int start = 0;<br>    int end = 0;<br>    int defaultCount = 1;<br>    for (int i = 0; i &lt; textCharArray.length; i+=defaultCount) {<br>        end+=defaultCount;<br>        Log.i(“ssss”,String.valueOf(textCharArray[i])+defaultCount);<br>        if (textCharArray[i] == ‘\n’) {<br>            if (end-1 &gt; start) {<br>                float x = paddingLeft;<br>                float y = (lineCount) <em> textSize + ((lineSpacing + textSize / 8) </em> (lineCount - 1));<br>                canvas.drawText(textCharArray, start, end - start, x, y, paint);<br>            }<br>            lineCount++;<br>            drawWidth = 0;<br>            start=i+1;<br>            defaultCount = 1;<br>            continue;<br>        }</p>
+<pre><code>    int index=(int)textCharArray[i];
+    if(i&lt;textCharArray.length-1
+            &amp;&amp;(index == 0xd83c
+            ||index == 0xd83d
+            || (index &gt;= 0x2600 &amp;&amp; index &lt;= 0x2B55))) {
+        defaultCount = 2;
+    }else{
+        defaultCount = 1;
+    }
+    charWidth = paint.measureText(textCharArray, i, defaultCount);
+    if (textShowWidth - drawWidth &lt; charWidth) {
+        float addSpacing = (textShowWidth - drawWidth)/(end-2-start);
+        float x = paddingLeft;
+        float y = (lineCount) * textSize + ((lineSpacing + textSize/8)* (lineCount - 1));
+
+        int innerDrawWidth=0;
+        int innerDefaultCount = 1;
+        for(int j= 0;j&lt;end-1-start;j+= innerDefaultCount) {
+            int innerIndex=(int)textCharArray[start+j];
+            if(i&lt;textCharArray.length-1
+                    &amp;&amp;(innerIndex == 0xd83c
+                    ||innerIndex == 0xd83d
+                    || (innerIndex &gt;= 0x2600 &amp;&amp; innerIndex &lt;= 0x2B55))){
+                innerDefaultCount = 2;
+            }else{
+                innerDefaultCount = 1;
+            }
+            canvas.drawText(textCharArray, start+j, innerDefaultCount, x+innerDrawWidth+j*addSpacing, y, paint);
+            float tempCharWidth=paint.measureText(textCharArray, start+j, innerDefaultCount);
+            innerDrawWidth+=tempCharWidth;
+        }
+
+        lineCount++;
+        drawWidth = 0;
+        start=i;
+    }
+    if(i==textCharArray.length-defaultCount){
+        float x = paddingLeft;
+        float y = (lineCount) * textSize + ((lineSpacing + textSize / 8) * (lineCount - 1));
+        canvas.drawText(textCharArray, start, textCharArray.length - start, x, y, paint);
+    }
+    drawWidth += charWidth;
+}
+</code></pre><p>}<br><code>`</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/20/HTTPS%E4%BB%8B%E7%BB%8D/" rel="next" title="HTTPS介绍">
+                <i class="fa fa-chevron-left"></i> HTTPS介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/10/Redis%E5%9F%BA%E7%A1%80/" rel="prev" title="Redis基础">
+                Redis基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Andy" />
+            
+              <p class="site-author-name" itemprop="name">Andy</p>
+              <p class="site-description motion-element" itemprop="description">Something Wrong</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初步解决方案"><span class="nav-number">3.</span> <span class="nav-text">初步解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存在的不足"><span class="nav-number">4.</span> <span class="nav-text">存在的不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考完善"><span class="nav-number">5.</span> <span class="nav-text">思考完善</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
